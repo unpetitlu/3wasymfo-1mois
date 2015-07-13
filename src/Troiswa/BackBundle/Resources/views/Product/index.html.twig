@@ -1,0 +1,49 @@
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+{% block content -%}
+    <h1>Product list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('troiswa_back_product_show', { 'idprod': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.title }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.price }}</td>
+                <td>{{ entity.quantity }}</td>
+                <td>{{ entity.active }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('troiswa_back_product_show', { 'idprod': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('troiswa_back_product_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('troiswa_back_product_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock %}

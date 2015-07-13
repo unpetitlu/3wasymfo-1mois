@@ -1,0 +1,15 @@
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+{% block content -%}
+    <h1>Product creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('troiswa_back_product') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+
+{% block title "contact - " ~ parent() %}
+
+{% block titlepage %}Contact{% endblock %}
+
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="active">
+        <i class="fa fa-dashboard"></i> Contact
+    </li>
+{% endblock %}
+
+
+{% block content %}
+    {{ form_start(formContact) }}
+    {{ form_end(formContact) }}
+{% endblock %}
+

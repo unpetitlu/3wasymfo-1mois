@@ -1,0 +1,30 @@
+troiswa_back_product:
+    path:     /
+    defaults: { _controller: "TroiswaBackBundle:Product:index" }
+
+troiswa_back_product_show:
+    path:     /{idprod}/show
+    defaults: { _controller: "TroiswaBackBundle:Product:show" }
+
+troiswa_back_product_new:
+    path:     /new
+    defaults: { _controller: "TroiswaBackBundle:Product:new" }
+
+troiswa_back_product_create:
+    path:     /create
+    defaults: { _controller: "TroiswaBackBundle:Product:create" }
+    methods:  POST
+
+troiswa_back_product_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "TroiswaBackBundle:Product:edit" }
+
+troiswa_back_product_update:
+    path:     /{id}/update
+    defaults: { _controller: "TroiswaBackBundle:Product:update" }
+    methods:  [POST, PUT]
+
+troiswa_back_product_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "TroiswaBackBundle:Product:delete" }
+    methods:  [POST, DELETE]

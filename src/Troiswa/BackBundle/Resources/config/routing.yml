@@ -1,0 +1,23 @@
+troiswa_back_resource_category:
+    resource: "@TroiswaBackBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+troiswa_back_resource_product:
+    resource: "@TroiswaBackBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+
+troiswa_back_admin:
+    path:     /admin
+    defaults: { _controller: TroiswaBackBundle:Main:index }
+
+
+troiswa_back_privacy:
+    path: /privacy
+    defaults:
+      _controller: FrameworkBundle:Template:template
+      template: 'TroiswaBackBundle:Main:index.html.twig'
+
+
+troiswa_back_contact:
+    path:     /contact
+    defaults: { _controller: TroiswaBackBundle:Main:contact }

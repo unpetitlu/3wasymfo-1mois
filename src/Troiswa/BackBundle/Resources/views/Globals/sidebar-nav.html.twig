@@ -1,0 +1,20 @@
+<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+{% set routePath = app.request.attributes.get("_route") %}
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav side-nav">
+        <li {% if routePath == 'troiswa_back_admin' %}class="active"{% endif %}>
+            <a {% if routePath != 'troiswa_back_admin' %}href="{{ path('troiswa_back_admin') }}"{% endif %}><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li {% if routePath == 'troiswa_back_contact' %}class="active"{% endif %}>
+            <a {% if routePath != 'troiswa_back_contact' %}href="{{ path('troiswa_back_contact') }}"{% endif %}><i class="fa fa-fw fa-bar-chart-o"></i> Contact</a>
+        </li>
+        <li {% if routePath == 'troiswa_back_product' %}class="active"{% endif %}>
+            <a {% if routePath != 'troiswa_back_product' %}href="{{ path('troiswa_back_product') }}"{% endif %}><i class="fa fa-fw fa-bar-chart-o"></i> Products</a>
+        </li>
+        <li {% if routePath == 'category' %}class="active"{% endif %}>
+            <a {% if routePath != 'category' %}href="{{ path('category') }}"{% endif %}><i class="fa fa-fw fa-bar-chart-o"></i> Categories</a>
+        </li>
+        {{ render(controller('TroiswaBackBundle:Category:allcategories')) }}
+    </ul>
+</div>
+<!-- /.navbar-collapse -->
