@@ -12,10 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+    // Return createQueryBuilder beacause use in FormType
     public function findTitleOrderPosition()
     {
-        $query = $this->createQueryBuilder('cat');
-        //die(var_dump($query->getQuery()));
-        return $query->getQuery()->getResult();
+        $query = $this->createQueryBuilder('cat')
+                        ->orderBy('cat.title', 'ASC');
+        return $query;
     }
 }

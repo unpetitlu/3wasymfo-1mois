@@ -32,10 +32,7 @@ class ProductType extends AbstractType
             ->add('category', 'entity', array(
                 'class' => 'TroiswaBackBundle:Category',
                 'query_builder' => function (CategoryRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.position', 'ASC');
-
-                    //$er->findTitleOrderPosition();
+                    return $er->findTitleOrderPosition();
                 },
                 'required' => false
             ));
