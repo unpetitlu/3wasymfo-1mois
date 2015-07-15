@@ -5,6 +5,7 @@ namespace Troiswa\BackBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
+use Troiswa\BackBundle\Form\Type\TelType;
 
 class MainController extends Controller
 {
@@ -31,6 +32,8 @@ class MainController extends Controller
                                 ]
                             ])
                             ->add('content', 'textarea')
+                            ->add('phone', new TelType())
+                            ->add('phone-service', 'tel')
                             ->add('envoyer', 'submit')
                             ->getForm();
 
