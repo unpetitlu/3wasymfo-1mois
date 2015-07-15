@@ -15,9 +15,15 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('title', 'text')
             ->add('description')
             ->add('position')
+            ->add('products', 'entity', [
+                'class' => 'TroiswaBackBundle:Product',
+                'property' => 'title',
+                'by_reference' => false,
+                'multiple' => true
+            ])
         ;
     }
     

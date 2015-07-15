@@ -31,8 +31,9 @@ class ProductType extends AbstractType
             ])
             ->add('category', 'entity', array(
                 'class' => 'TroiswaBackBundle:Category',
+                //'property' => 'title', // Pas besoin de __toString() dans l'entity Category
                 'query_builder' => function (CategoryRepository $er) {
-                    return $er->findTitleOrderPosition();
+                    return $er->findTitleOrderPositionForForm();
                 },
                 'required' => false
             ));

@@ -222,7 +222,7 @@ class CategoryController extends Controller
         ;
     }
 
-    public function allcategoriesAction()
+    public function allcategoriesrenderAction()
     {
         $em = $this->getDoctrine()->getManager();
 

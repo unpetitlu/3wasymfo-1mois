@@ -95,8 +95,6 @@ class ProductController extends Controller
      */
     public function showAction(Product $entity)
     {
-        dump($entity);
-        die;
         $em = $this->getDoctrine()->getManager();
 
         /*

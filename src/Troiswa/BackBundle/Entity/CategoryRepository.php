@@ -13,10 +13,10 @@ use Doctrine\ORM\EntityRepository;
 class CategoryRepository extends EntityRepository
 {
     // Return createQueryBuilder beacause use in FormType
-    public function findTitleOrderPosition()
+    public function findTitleOrderPositionForForm()
     {
         $query = $this->createQueryBuilder('cat')
-                        ->orderBy('cat.title', 'ASC');
+                        ->orderBy('cat.title', 'DESC');
         return $query;
     }
 }

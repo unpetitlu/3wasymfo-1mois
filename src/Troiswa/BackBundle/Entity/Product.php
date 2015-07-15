@@ -5,6 +5,7 @@ namespace Troiswa\BackBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Troiswa\BackBundle\Validator\Antigrosmots;
 
 /**
  * Product
@@ -35,6 +36,7 @@ class Product
      * @var string
      *
      * @Assert\NotBlank()
+     * @Antigrosmots(message="Attention gros mots")
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -90,10 +92,10 @@ class Product
 
 
     /**
-     * @var \Jeweler
      *
-     * @ORM\ManyToOne(targetEntity="Troiswa\BackBundle\Entity\Category")
-     * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Troiswa\BackBundle\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id", onDelete="SET NULL", nullable=true)
+     * onDelete="SET NULL" permet de mettre un SET NULL dans le cascade
      */
     protected $category;
 
@@ -295,6 +297,15 @@ class Product
     {
         return $this->updated;
     }
+
+    
+
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+
 
     /**
      * Set category

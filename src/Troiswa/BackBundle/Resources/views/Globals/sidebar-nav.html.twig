@@ -14,7 +14,7 @@
         <li {% if routePath == 'category' %}class="active"{% endif %}>
             <a {% if routePath != 'category' %}href="{{ path('category') }}"{% endif %}><i class="fa fa-fw fa-bar-chart-o"></i> Categories</a>
         </li>
-        {{ render(controller('TroiswaBackBundle:Category:allcategories')) }}
+        {{ render(controller('TroiswaBackBundle:Category:allcategoriesrender')) }}
     </ul>
 </div>
 <!-- /.navbar-collapse -->
