@@ -36,6 +36,7 @@ class Product
      * @var string
      *
      * @Assert\NotBlank()
+     * Je redéfinie le message d'erreur antigrosmots
      * @Antigrosmots(message="Attention gros mots")
      * @ORM\Column(name="description", type="text")
      */
@@ -97,7 +98,14 @@ class Product
      * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id", onDelete="SET NULL", nullable=true)
      * onDelete="SET NULL" permet de mettre un SET NULL dans le cascade
      */
-    protected $category;
+    private $category;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Troiswa\BackBundle\Entity\Image", cascade={"persist", "remove"}))
+     * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
+     */
+    private $image;
 
     public function __construct()
     {
@@ -305,8 +313,6 @@ class Product
         return $this->title;
     }
 
-
-
     /**
      * Set category
      *
@@ -328,5 +334,28 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Troiswa\BackBundle\Entity\Image $image
+     * @return Product
+     */
+    public function setImage(\Troiswa\BackBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Troiswa\BackBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

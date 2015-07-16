@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * Category
  *
- * @ORM\Table()
+ * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Entity\CategoryRepository")
  */
 class Category
@@ -48,7 +48,7 @@ class Category
      *
      * @ORM\OneToMany(targetEntity="Troiswa\BackBundle\Entity\Product", mappedBy="category")
      */
-    protected $products;
+    private $products;
 
 
 

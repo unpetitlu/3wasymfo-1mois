@@ -36,7 +36,8 @@ class ProductType extends AbstractType
                     return $er->findTitleOrderPositionForForm();
                 },
                 'required' => false
-            ));
+            ))
+            ->add('image', new ImageType());
         ;
     }
 

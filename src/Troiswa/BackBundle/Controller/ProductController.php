@@ -43,6 +43,10 @@ class ProductController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            // without cascade persist
+            //$entity->getImage()->upload();
+
             $em->persist($entity);
             $em->flush();
 
@@ -195,6 +199,7 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('TroiswaBackBundle:Product')->find($id);
 

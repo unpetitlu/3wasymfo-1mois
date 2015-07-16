@@ -9,11 +9,10 @@ class AntigrosmotsValidator extends ConstraintValidator
 {
     public function validate($value, Constraint $constraint)
     {
-        $blacklists = ['merde'];
-
-        if (in_array($value, $blacklists))
+        if(preg_match("#\b(merde|con)\b#ui", $value))
         {
-            $this->context->addViolation($constraint->message);
+            $this->context->buildViolation($constraint->message)
+                            ->addViolation();
         }
     }
 }
