@@ -201,7 +201,7 @@ class ProductController extends Controller
         if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TroiswaBackBundle:Product')->find($id);
+            $entity = $em->getRepository('TroiswaBackBundle:Product')->findProductAndImage($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Product entity.');

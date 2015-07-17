@@ -141,6 +141,12 @@ class Image
         if ($file) {
             unlink($file);
         }
+
+        $fileThumb = $this->getUploadRootDir().'/thumb-small-'.$this->path;
+        if ($fileThumb)
+        {
+            unlink($fileThumb);
+        }
     }
 
     public function getAbsolutePath()

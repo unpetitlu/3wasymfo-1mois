@@ -12,6 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductRepository extends EntityRepository
 {
+    public function findProductAndImage($id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery(
+                "
+                 SELECT prod, pic
+                 FROM TroiswaBackBundle:Product prod
+                 LEFT JOIN prod.image pic
+                 WHERE prod.id = :id"
+            )
+            ->setParameter('id', $id);
+
+        return $query->getSingleResult();
+    }
+
     public function getCountProduct()
     {
         $query = $this->getEntityManager()

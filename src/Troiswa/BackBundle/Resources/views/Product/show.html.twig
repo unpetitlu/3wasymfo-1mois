@@ -31,6 +31,10 @@
             </tr>
         </tbody>
     </table>
+    
+    {% if entity.image is not null %}
+        <img src="{{ asset(entity.image.webPath) }}">
+    {% endif %}
 
         <ul class="record_actions">
     <li>
