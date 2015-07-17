@@ -52,8 +52,6 @@ class Image
      */
     private $file;
 
-    private $temp;
-
 
     /**
      * Get id
@@ -91,16 +89,6 @@ class Image
     public function setFile(UploadedFile $file = null)
     {
         $this->file = $file;
-        // check if we have an old image path
-        if (isset($this->path))
-        {
-            $this->temp = $this->path;
-            /*
-             * Si on modifie uniquement l'image et pas le alt par exemple
-             * je crée une modification fictive
-            */
-            $this->path = null;
-        }
 
         return $this;
     }
@@ -117,7 +105,7 @@ class Image
     public function preUpload()
     {
         if (null !== $this->getFile()) {
-            // generate a unique name
+            // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
             $this->path = $filename.'.'.$this->getFile()->guessExtension();
         }
@@ -136,30 +124,29 @@ class Image
         // Upload picture
         $this->getFile()->move($this->getUploadRootDir(), $this->path);
 
+        // check if we have an old image
+        if (isset($this->path))
+        {
+            // delete the old image
+            unlink($this->getUploadRootDir().'/'.$this->path);
+            foreach($this->thumbnails as $key => $thumb)
+            {
+                unlink($this->getUploadRootDir() . '/'.$key.'-' . $this->path);
+            }
+            // clear the temp image path
+            $this->temp = null;
+        }
+
         // create thumbnails
+
         $imagine = new \Imagine\Gd\Imagine();
         $imagineOpen = $imagine->open($this->getAbsolutePath());
         foreach($this->thumbnails as $key => $thumb)
         {
             $imagineOpen->thumbnail(new \Imagine\Image\Box($thumb[0], $thumb[1]))
-                ->save(
-                    $this->getUploadRootDir() . '/'.$key.'-' . $this->path
-                );
-        }
-
-
-
-        // check if we have an old image
-        if (isset($this->temp))
-        {
-            // delete the old image
-            unlink($this->getUploadRootDir().'/'.$this->temp);
-            foreach($this->thumbnails as $key => $thumb)
-            {
-                unlink($this->getUploadRootDir() . '/'.$key.'-' . $this->temp);
-            }
-            // clear the temp image path
-            $this->temp = null;
+                        ->save(
+                            $this->getUploadRootDir() . '/'.$key.'-' . $this->path
+                            );
         }
 
         // clean up the file property as you won't need it anymore
@@ -233,28 +220,5 @@ class Image
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
         return 'uploads/products';
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return Image
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string 
-     */
-    public function getAlt()
-    {
-        return $this->alt;
     }
 }

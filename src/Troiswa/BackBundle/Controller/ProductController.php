@@ -201,7 +201,14 @@ class ProductController extends Controller
         if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TroiswaBackBundle:Product')->findProductAndImage($id);
+            /* WARNING */
+            /*
+             Image and product are linked
+             2 solutions pour la suppression :
+                - faire une jointure entre product et image pour éviter le proxy sur image
+                - faire un @preRemove() dans l'entité image
+             */
+            $entity = $em->getRepository('TroiswaBackBundle:Product')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Product entity.');

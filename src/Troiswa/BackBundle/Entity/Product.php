@@ -102,8 +102,10 @@ class Product
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Troiswa\BackBundle\Entity\Image", cascade={"persist", "remove"}))
-     * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Troiswa\BackBundle\Entity\Image", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="id_image", referencedColumnName="id", onDelete="CASCADE")
+     *
+     * @Assert\Valid
      */
     private $image;
 
@@ -344,6 +346,8 @@ class Product
      */
     public function setImage(\Troiswa\BackBundle\Entity\Image $image = null)
     {
+        $image = ($image != null && $image->getFile()) ? $image : null;
+
         $this->image = $image;
 
         return $this;

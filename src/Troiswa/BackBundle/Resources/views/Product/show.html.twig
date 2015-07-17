@@ -31,9 +31,13 @@
             </tr>
         </tbody>
     </table>
-    
+    <p>Affichage format normal</p>
     {% if entity.image is not null %}
         <img src="{{ asset(entity.image.webPath) }}">
+    {% endif %}
+    <p>Affichage format miniature</p>
+    {% if entity.image is not null %}
+        <img src="{{ asset(entity.image.webPath('thumb-small')) }}">
     {% endif %}
 
         <ul class="record_actions">
