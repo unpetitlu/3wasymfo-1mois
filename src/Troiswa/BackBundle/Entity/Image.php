@@ -153,10 +153,17 @@ class Image
         if (isset($this->temp))
         {
             // delete the old image
-            unlink($this->getUploadRootDir().'/'.$this->temp);
+            if (file_exists($this->getUploadRootDir().'/'.$this->temp))
+            {
+                unlink($this->getUploadRootDir() . '/' . $this->temp);
+            }
+
             foreach($this->thumbnails as $key => $thumb)
             {
-                unlink($this->getUploadRootDir() . '/'.$key.'-' . $this->temp);
+                if (file_exists($this->getUploadRootDir() . '/'.$key.'-' . $this->temp))
+                {
+                    unlink($this->getUploadRootDir() . '/'.$key.'-' . $this->temp);
+                }
             }
             // clear the temp image path
             $this->temp = null;
@@ -181,16 +188,16 @@ class Image
     public function removeUpload()
     {
         $file = $this->getAbsolutePath();
-        if ($file) {
+        if (file_exists($file))
+        {
             unlink($file);
         }
 
         // remove thumbnails
         foreach($this->thumbnails as $key => $thumb)
         {
-
             $fileThumb = $this->getUploadRootDir().'/'.$key.'-'.$this->path;
-            if ($fileThumb)
+            if (file_exists($fileThumb))
             {
                 unlink($fileThumb);
             }

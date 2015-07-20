@@ -103,7 +103,7 @@ class Product
     /**
      *
      * @ORM\OneToOne(targetEntity="Troiswa\BackBundle\Entity\Image", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="id_image", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="id_image", referencedColumnName="id", onDelete="SET NULL")
      *
      * @Assert\Valid
      */

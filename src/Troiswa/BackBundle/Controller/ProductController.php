@@ -68,9 +68,10 @@ class ProductController extends Controller
      */
     private function createCreateForm(Product $entity)
     {
-        $form = $this->createForm(new ProductType(), $entity, array(
+        $form = $this->createForm(new ProductType(['em' => $this->getDoctrine()->getManager()]), $entity, array(
             'action' => $this->generateUrl('troiswa_back_product_create'),
             'method' => 'POST',
+
         ));
 
         $form->add('submit', 'submit', array('label' => 'Create'));
@@ -150,7 +151,7 @@ class ProductController extends Controller
     */
     private function createEditForm(Product $entity)
     {
-        $form = $this->createForm(new ProductType(), $entity, array(
+        $form = $this->createForm(new ProductType(['em' => $this->getDoctrine()->getManager()]), $entity, array(
             'action' => $this->generateUrl('troiswa_back_product_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

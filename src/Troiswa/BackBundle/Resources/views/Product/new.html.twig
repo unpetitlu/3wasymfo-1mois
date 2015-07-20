@@ -20,6 +20,10 @@
     <script type="text/javascript">
         var $collectionHolder;
 
+
+
+
+
         // setup an "add a tag" link
         var $addTagLink = $('<a href="#" class="add_tag_link">Add a tag</a>');
         var $newLinkLi = $('<li></li>').append($addTagLink);
@@ -42,6 +46,13 @@
                 // add a new tag form (see next code block)
                 addTagForm($collectionHolder, $newLinkLi);
             });
+
+            // ajoute un lien de suppression à tous les éléments li de
+            // formulaires de tag existants
+            collectionHolder.find('div.form-group').each(function() {
+                addTagFormDeleteLink($(this));
+            });
+
         });
 
         function addTagForm($collectionHolder, $newLinkLi) {
@@ -61,6 +72,22 @@
             // Display the form in the page in an li, before the "Add a tag" link li
             var $newFormLi = $('<li></li>').append(newForm);
             $newLinkLi.before($newFormLi);
+
+            // ajoute un lien de suppression au nouveau formulaire
+            addTagFormDeleteLink($newFormLi);
+        }
+
+        function addTagFormDeleteLink($tagFormLi) {
+            var $removeFormA = $('<a href="#">Supprimer ce tag</a>');
+            $tagFormLi.append($removeFormA);
+
+            $removeFormA.on('click', function(e) {
+                // empêche le lien de créer un « # » dans l'URL
+                e.preventDefault();
+
+                // supprime l'élément li pour le formulaire de tag
+                $tagFormLi.remove();
+            });
         }
     </script>
 {% endblock %}
