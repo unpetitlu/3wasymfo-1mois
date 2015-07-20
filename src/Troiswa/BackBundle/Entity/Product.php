@@ -109,9 +109,23 @@ class Product
      */
     private $image;
 
+
+    /** @ORM\ManyToMany(targetEntity="Tag", inversedBy="product", cascade={"persist"})
+     *  @ORM\JoinTable(name="product_tag",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    protected $tag;
+
     public function __construct()
     {
         $this->active = true;
+        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -361,5 +375,38 @@ class Product
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param \Troiswa\BackBundle\Entity\Tag $tag
+     * @return Product
+     */
+    public function addTag(\Troiswa\BackBundle\Entity\Tag $tag)
+    {
+        $this->tag[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \Troiswa\BackBundle\Entity\Tag $tag
+     */
+    public function removeTag(\Troiswa\BackBundle\Entity\Tag $tag)
+    {
+        $this->tag->removeElement($tag);
+    }
+
+    /**
+     * Get tag
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTag()
+    {
+        return $this->tag;
     }
 }

@@ -102,14 +102,30 @@ class Product
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Troiswa\BackBundle\Entity\Image")
-     * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Troiswa\BackBundle\Entity\Image", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="id_image", referencedColumnName="id", onDelete="CASCADE")
+     *
+     * @Assert\Valid
      */
     private $image;
+
+
+    /** @ORM\ManyToMany(targetEntity="Tag", inversedBy="product")
+     *  @ORM\JoinTable(name="product_tag",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    protected $tag;
 
     public function __construct()
     {
         $this->active = true;
+        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -334,5 +350,30 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Troiswa\BackBundle\Entity\Image $image
+     * @return Product
+     */
+    public function setImage(\Troiswa\BackBundle\Entity\Image $image = null)
+    {
+        $image = ($image != null && $image->getFile()) ? $image : null;
+
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Troiswa\BackBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

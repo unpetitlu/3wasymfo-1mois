@@ -37,7 +37,12 @@ class ProductType extends AbstractType
                 },
                 'required' => false
             ))
-            ->add('image', new ImageType());
+            ->add('image', new ImageType())
+            ->add('tag', 'collection', 
+                [
+                    'type' => new TagType(),
+                    'allow_add'    => true
+                ]);;
         ;
     }
 
