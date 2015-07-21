@@ -64,7 +64,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=255)
+     * @ORM\Column(name="login", type="string", length=255, unique=true)
      */
     private $login;
 
@@ -87,6 +87,19 @@ class User implements UserInterface
      * @ORM\Column(name="sexe", type="boolean")
      */
     private $sexe;
+
+    /**
+    *
+    * @ORM\OneToMany(targetEntity="UserCoupon", mappedBy="user")
+    */
+    private $coupon;
+
+
+    public function __construct()
+    {
+        #$this->salt = md5(uniqid(null, true));
+        #$this->token = sha1(uniqid(null, true).microtime());
+    }
 
 
     /**
@@ -346,7 +359,7 @@ class User implements UserInterface
      */
     public function getUsername()
     {
-        return $this->email;
+        return $this->login;
     }
 
     /**
@@ -358,5 +371,38 @@ class User implements UserInterface
     public function eraseCredentials()
     {
 
+    }
+
+    /**
+     * Add coupon
+     *
+     * @param \Troiswa\BackBundle\Entity\UserCoupon $coupon
+     * @return User
+     */
+    public function addCoupon(\Troiswa\BackBundle\Entity\UserCoupon $coupon)
+    {
+        $this->coupon[] = $coupon;
+
+        return $this;
+    }
+
+    /**
+     * Remove coupon
+     *
+     * @param \Troiswa\BackBundle\Entity\UserCoupon $coupon
+     */
+    public function removeCoupon(\Troiswa\BackBundle\Entity\UserCoupon $coupon)
+    {
+        $this->coupon->removeElement($coupon);
+    }
+
+    /**
+     * Get coupon
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCoupon()
+    {
+        return $this->coupon;
     }
 }
