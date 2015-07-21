@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Troiswa\BackBundle\Entity\CategoryRepository;
+use Troiswa\BackBundle\Repository\CategoryRepository;
 use Troiswa\BackBundle\Form\DataTransformer\TextToTagTransformer;
 
 class ProductType extends AbstractType

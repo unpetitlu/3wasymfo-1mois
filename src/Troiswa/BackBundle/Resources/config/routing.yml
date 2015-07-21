@@ -1,3 +1,7 @@
+troiswa_back_resource_user:
+    resource: "@TroiswaBackBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
 troiswa_back_resource_category:
     resource: "@TroiswaBackBundle/Resources/config/routing/category.yml"
     prefix:   /category
@@ -7,7 +11,7 @@ troiswa_back_resource_product:
     prefix:   /product
 
 troiswa_back_admin:
-    path:     /admin
+    path:     /
     defaults: { _controller: TroiswaBackBundle:Main:index }
 
 
@@ -21,3 +25,14 @@ troiswa_back_privacy:
 troiswa_back_contact:
     path:     /contact
     defaults: { _controller: TroiswaBackBundle:Main:contact }
+
+
+troiswa_back_login:
+    pattern:   /login
+    defaults:  { _controller: TroiswaBackBundle:Security:login }
+
+troiswa_back_login_check:
+    pattern:   /login_check
+
+troiswa_back_logout:
+    pattern:   /logout

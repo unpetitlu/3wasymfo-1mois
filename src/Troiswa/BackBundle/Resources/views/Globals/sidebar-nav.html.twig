@@ -14,6 +14,9 @@
         <li {% if routePath == 'category' %}class="active"{% endif %}>
             <a {% if routePath != 'category' %}href="{{ path('category') }}"{% endif %}><i class="fa fa-fw fa-bar-chart-o"></i> Categories</a>
         </li>
+        <li {% if routePath == 'troiswa_back_user' %}class="active"{% endif %}>
+            <a {% if routePath != 'troiswa_back_user' %}href="{{ path('troiswa_back_user') }}"{% endif %}><i class="fa fa-fw fa-bar-chart-o"></i> Utilisateur</a>
+        </li>
         {{ render(controller('TroiswaBackBundle:Category:allcategoriesrender')) }}
     </ul>
 </div>

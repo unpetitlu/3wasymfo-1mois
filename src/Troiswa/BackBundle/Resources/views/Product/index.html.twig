@@ -16,6 +16,7 @@
             </tr>
         </thead>
         <tbody>
+
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('troiswa_back_product_show', { 'idprod': entity.id }) }}">{{ entity.id }}</a></td>

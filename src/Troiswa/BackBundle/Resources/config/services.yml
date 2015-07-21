@@ -1,9 +1,79 @@
+parameters:
+  genders:
+    0: Homme
+    1: Femme
+
 services:
 #    troiswa_back.example:
 #        class: Troiswa\BackBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
 
+    troiswa.email: #Nom du service
+      class: Troiswa\BackBundle\Email\Email #class du Service
+      arguments: ["@mailer", "@twig"]
+                  # Service Swift Mailer
+                  # Service Twig
+
+
     troiswa.form.type.tel:
       class: Troiswa\BackBundle\Form\Type\TelType
       tags:
         - { name: form.type, alias: tel }
+
+
+    troiswa.form.type.gender:
+            class: Troiswa\BackBundle\Form\Type\GenderType
+            arguments: ["%genders%"]
+            tags:
+                - { name: form.type, alias: gender }
+
+
+    troiswa.validator.position.category:
+          class: Troiswa\BackBundle\Validator\PositionCategoryValidator
+          arguments: [@doctrine.orm.entity_manager]
+          tags:
+            - { name: validator.constraint_validator, alias: troiswa_validator_position_cat }
+
+    troiswa.backend.notification:
+            # Classe avec Namespaces
+            class: Troiswa\BackBundle\Notification\Notification
+            arguments: ["@session"]
+
+
+    troiswa.back.listener.product.persist:
+
+            # Nom de la classe
+            class: Troiswa\BackBundle\Listener\ProductListener
+
+            # Argument du constructeur
+            # Service de notification que l'on a crée juste en dessus
+            # ATTENTION: L'injection des dépendances se fait si mon service n'est pas deja injecté ,
+            # notement par le tag qui est associ à mon service
+            arguments: ["@troiswa.backend.notification"]
+
+            # Ma classe utilisera le mecanisme d'écouteur de Symfony 2
+            tags:
+                # name: correspond au mecanisme ou ma classe sera affectée
+                # et plus particulierement au mecanisme d'écouteur de doctrine
+
+                # event: sera l'événement déclencheur de mon service
+                # et plus particulierement à la modification d'un objet
+
+                # method: la methode qui sera appellé après déclenchement de mon event
+                # et plus particulierement la methode appelé dans mon service: postUpdate()
+                # Evenement à doctrine: (Lifecycle)
+                # Doctrine a une liste exhaustive d'evenement appelé "LifesCydle"
+                # Cycle de vie d'un objet en Doctrine
+                # + preRemove
+                # + postRemove
+                # + prePersist : quand je crée mon objet en base de donnée
+                # + postPersist
+                # + preUpdate : quand je modifie mon objet en base de donnée
+                # + postUpdate
+                # + postLoad
+                # + loadClassMetadata
+
+                # postUpdate:
+                - { name: doctrine.event_listener, event: postUpdate, method: postUpdate }
+                - { name: doctrine.event_listener, event: postPersist, method: postPersist }
+                - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }

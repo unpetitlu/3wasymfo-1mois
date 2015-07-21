@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Image
  *
  * @ORM\Table(name="image")
- * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Entity\ImageRepository")
+ * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Repository\ImageRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Image

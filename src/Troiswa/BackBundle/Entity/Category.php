@@ -5,12 +5,13 @@ namespace Troiswa\BackBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Troiswa\BackBundle\Validator\PositionCategory;
 
 /**
  * Category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Entity\CategoryRepository")
+ * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Repository\CategoryRepository")
  */
 class Category
 {
@@ -39,7 +40,7 @@ class Category
 
     /**
      * @var integer
-     *
+     * @PositionCategory
      * @ORM\Column(name="position", type="integer")
      */
     private $position;

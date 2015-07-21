@@ -5,14 +5,23 @@ namespace Troiswa\BackBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
+use Troiswa\BackBundle\Entity\User;
 use Troiswa\BackBundle\Form\Type\TelType;
 
 class MainController extends Controller
 {
+
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        /*
+        $user = new User();
+        $factory = $this->get('security.encoder_factory');
 
+        $encoder = $factory->getEncoder($user);
+        $password = $encoder->encodePassword('admin', null);
+        echo $password;
+        die;
+        */
         return $this->render('TroiswaBackBundle:Main:index.html.twig');
     }
 

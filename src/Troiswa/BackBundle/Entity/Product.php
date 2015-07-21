@@ -11,7 +11,7 @@ use Troiswa\BackBundle\Validator\Antigrosmots;
  * Product
  *
  * @ORM\Table(name="product")
- * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Entity\ProductRepository")
+ * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Repository\ProductRepository")
  */
 class Product
 {
@@ -113,14 +113,14 @@ class Product
     /** @ORM\ManyToMany(targetEntity="Tag", inversedBy="product", cascade={"persist"})
      *  @ORM\JoinTable(name="product_tag",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="id_product", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="id_tag", referencedColumnName="id")
      *   }
      * )
      */
-    protected $tag;
+    private $tag;
 
     public function __construct()
     {

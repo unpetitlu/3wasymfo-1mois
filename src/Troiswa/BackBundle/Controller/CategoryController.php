@@ -19,14 +19,23 @@ class CategoryController extends Controller
      * Lists all Category entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TroiswaBackBundle:Category')->findAll();
+
+        $dql   = "SELECT a FROM TroiswaBackBundle:Category a";
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
 
         return $this->render('TroiswaBackBundle:Category:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $pagination,
         ));
     }
     /**
