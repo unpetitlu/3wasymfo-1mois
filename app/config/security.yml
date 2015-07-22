@@ -1,4 +1,10 @@
 security:
+    # Contrairement à la stratégie par défaut affirmative, avec la stratégie unanimous, si seulement un voteur refuse l'accès
+    # alors l'accès n'est pas autorisé pour l'utilisateur final.
+    access_decision_manager:
+      # La valeur de « Strategy » peut être : affirmative, unanimous ou consensus
+      strategy: unanimous
+
     encoders:
       Symfony\Component\Security\Core\User\User: plaintext
 
@@ -6,12 +12,15 @@ security:
       #    algorithm: sha512
       #    encode_as_base64: false
       #    iterations: 1
-      Troiswa\BackBundle\Entity\User: plaintext
+      Troiswa\BackBundle\Entity\User:
+        algorithm: bcrypt
+        cost: 15
 
 
     role_hierarchy:
       ROLE_SUPERADMIN: [ROLE_ADMIN]
       ROLE_ADMIN: [ROLE_USER, ROLE_ALLOWED_TO_SWITCH]
+      ROLE_USER: [ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         in_memory:
@@ -23,7 +32,10 @@ security:
                 toto: { password: bidule, roles: ROLE_USER }
 
         provider_back:
-          entity: { class: TroiswaBackBundle:User, property: email }
+          #entity: { class: TroiswaBackBundle:User, property: login }
+          #entity: { class: TroiswaBackBundle:User, property: email }
+          #Utilisation du UserRepository pour créer un fournisseur et ainsi utiliser le login et l'email
+          entity: { class: TroiswaBackBundle:User }
 
     firewalls:
         dev:
@@ -40,18 +52,33 @@ security:
             #http_basic:
             #  realm: "Secured Demo Area"
             #  provider: provider_back
-            #?_switch_user=thomas
-            #?_switch_user=exit
-            switch_user: { role: ROLE_ADMIN, parameter: _want_to_be_this_user }
+            #?_switch_user=tom
+            #?_switch_user=_exit
+            #parameter : _want_to_be_this_user permet de modifier l'url
+            switch_user: { role: ROLE_ADMIN }
 
             form_login:
               check_path: troiswa_back_login_check
               login_path: troiswa_back_login
+              #Maintenant, quand aucune URL n'est définie dans la session, l'utilisateur va être envoyé vers /admin.
+              default_target_path: troiswa_back_admin
+              #vers la page par défaut sans tenir compte de l'URL qu'ils avaient demandée
+              always_use_default_target_path: true
+              csrf_provider: security.csrf.token_manager
             logout:
               path: troiswa_back_logout
+              target: /admin/login
 
             provider: provider_back
 
 
+            remember_me:
+              key:      "%secret%"
+              lifetime: 31536000 # 365 jours en secondes
+              path:     /
+              domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
+
+
     access_control:
       - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/admin, role: ROLE_USER }

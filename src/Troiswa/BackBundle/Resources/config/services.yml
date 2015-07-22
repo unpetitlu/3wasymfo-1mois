@@ -77,3 +77,11 @@ services:
                 - { name: doctrine.event_listener, event: postUpdate, method: postUpdate }
                 - { name: doctrine.event_listener, event: postPersist, method: postPersist }
                 - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
+
+
+    troiswa.back.security.access.blacklist_voter:
+        class:      Troiswa\BackBundle\Security\Authorization\Voter\ClientIpVoter
+        arguments:  [@service_container, [123.123.123.123, 171.171.171.171]]
+        public:     false
+        tags:
+            - { name: security.voter }

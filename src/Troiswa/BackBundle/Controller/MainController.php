@@ -22,6 +22,9 @@ class MainController extends Controller
         echo $password;
         die;
         */
+
+        // $user = $this->getUser();
+        
         return $this->render('TroiswaBackBundle:Main:index.html.twig');
     }
 

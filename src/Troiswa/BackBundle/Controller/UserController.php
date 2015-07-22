@@ -40,6 +40,7 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            // ENCRYPTE PASSWORD AND CONNECT
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
