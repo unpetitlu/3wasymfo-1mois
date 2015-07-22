@@ -14,6 +14,7 @@ use Troiswa\BackBundle\Validator\StrongPassword;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Repository\UserRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class User implements AdvancedUserInterface, \Serializable
 {
@@ -148,6 +149,7 @@ class User implements AdvancedUserInterface, \Serializable
         //$this->token = sha1(uniqid(null, true).microtime());
 
         $this->oldCoupons = new ArrayCollection();
+        $this->usercoupon = new ArrayCollection();
     }
 
 
@@ -434,6 +436,7 @@ class User implements AdvancedUserInterface, \Serializable
     {
         if (!$this->hasAlreadyCoupon($usercoupon))
         {
+            $usercoupon->setUser($this);
             $this->usercoupon[] = $usercoupon;
         }
 
@@ -450,7 +453,7 @@ class User implements AdvancedUserInterface, \Serializable
             }
         }
 
-        return true;
+        return false;
     }
 
     /**
