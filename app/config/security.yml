@@ -49,7 +49,7 @@ security:
               login_path: troiswa_back_login
             logout:
               path: troiswa_back_logout
-              
+
             provider: provider_back
 
 
