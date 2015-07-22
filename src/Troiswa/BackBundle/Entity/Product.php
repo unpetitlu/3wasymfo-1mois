@@ -122,6 +122,8 @@ class Product
      */
     private $tag;
 
+    private $oldTag;
+
     public function __construct()
     {
         $this->active = true;
@@ -385,7 +387,10 @@ class Product
      */
     public function addTag(\Troiswa\BackBundle\Entity\Tag $tag)
     {
-        $this->tag[] = $tag;
+        if (!$this->tag->contains($tag))
+        {
+            $this->tag[] = $tag;
+        }
 
         return $this;
     }

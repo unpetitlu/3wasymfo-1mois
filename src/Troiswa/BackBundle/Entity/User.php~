@@ -2,8 +2,10 @@
 
 namespace Troiswa\BackBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Troiswa\BackBundle\Validator\StrongPassword;
 
@@ -13,7 +15,7 @@ use Troiswa\BackBundle\Validator\StrongPassword;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Repository\UserRepository")
  */
-class User implements UserInterface
+class User implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -92,13 +94,56 @@ class User implements UserInterface
     *
     * @ORM\OneToMany(targetEntity="UserCoupon", mappedBy="user")
     */
-    private $coupon;
+    private $usercoupon;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="enabled", type="boolean")
+     */
+    protected $enabled;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="credentialsExpired", type="boolean")
+     */
+    protected $credentialsExpired;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="accountNoLocked", type="boolean")
+     */
+    protected $accountNoLocked;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="accountNoExpired", type="boolean")
+     */
+    protected $accountNoExpired;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
+     *
+     */
+    private $groups;
 
 
     public function __construct()
     {
-        #$this->salt = md5(uniqid(null, true));
-        #$this->token = sha1(uniqid(null, true).microtime());
+        $this->enabled = false;
+        $this->accountNoExpired = true;
+        $this->accountNoLocked = true;
+        $this->credentialsExpired = true;
+
+        $this->groups = new ArrayCollection();
+
+        //$this->salt = md5(uniqid(null, true));
+        //$this->token = sha1(uniqid(null, true).microtime());
     }
 
 
@@ -337,8 +382,10 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        //return ['ROLE_USER'];
+        return $this->groups->toArray();
     }
+
 
     /**
      * Returns the salt that was originally used to encode the password.
@@ -371,5 +418,224 @@ class User implements UserInterface
     public function eraseCredentials()
     {
 
+    }
+
+    
+
+    /**
+     * Checks whether the user's account has expired.
+     *
+     * Internally, if this method returns false, the authentication system
+     * will throw an AccountExpiredException and prevent login.
+     *
+     * @return bool true if the user's account is non expired, false otherwise
+     *
+     * @see AccountExpiredException
+     */
+    public function isAccountNonExpired()
+    {
+        return $this->accountNoExpired;
+    }
+
+    /**
+     * Checks whether the user is locked.
+     *
+     * Internally, if this method returns false, the authentication system
+     * will throw a LockedException and prevent login.
+     *
+     * @return bool true if the user is not locked, false otherwise
+     *
+     * @see LockedException
+     */
+    public function isAccountNonLocked()
+    {
+        return $this->accountNoLocked;
+    }
+
+    /**
+     * Checks whether the user's credentials (password) has expired.
+     *
+     * Internally, if this method returns false, the authentication system
+     * will throw a CredentialsExpiredException and prevent login.
+     *
+     * @return bool true if the user's credentials are non expired, false otherwise
+     *
+     * @see CredentialsExpiredException
+     */
+    public function isCredentialsNonExpired()
+    {
+        return $this->credentialsExpired;
+    }
+
+    /**
+     * Checks whether the user is enabled.
+     *
+     * Internally, if this method returns false, the authentication system
+     * will throw a DisabledException and prevent login.
+     *
+     * @return bool true if the user is enabled, false otherwise
+     *
+     * @see DisabledException
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return User
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set credentialsExpired
+     *
+     * @param boolean $credentialsExpired
+     * @return User
+     */
+    public function setCredentialsExpired($credentialsExpired)
+    {
+        $this->credentialsExpired = $credentialsExpired;
+
+        return $this;
+    }
+
+    /**
+     * Get credentialsExpired
+     *
+     * @return boolean 
+     */
+    public function getCredentialsExpired()
+    {
+        return $this->credentialsExpired;
+    }
+
+    /**
+     * Set accountNoLocked
+     *
+     * @param boolean $accountNoLocked
+     * @return User
+     */
+    public function setAccountNoLocked($accountNoLocked)
+    {
+        $this->accountNoLocked = $accountNoLocked;
+
+        return $this;
+    }
+
+    /**
+     * Get accountNoLocked
+     *
+     * @return boolean 
+     */
+    public function getAccountNoLocked()
+    {
+        return $this->accountNoLocked;
+    }
+
+    /**
+     * Set accountNoExpired
+     *
+     * @param boolean $accountNoExpired
+     * @return User
+     */
+    public function setAccountNoExpired($accountNoExpired)
+    {
+        $this->accountNoExpired = $accountNoExpired;
+
+        return $this;
+    }
+
+    /**
+     * Get accountNoExpired
+     *
+     * @return boolean 
+     */
+    public function getAccountNoExpired()
+    {
+        return $this->accountNoExpired;
+    }
+
+    /**
+     * Add groups
+     *
+     * @param \Troiswa\BackBundle\Entity\Group $groups
+     * @return User
+     */
+    public function addGroup(\Troiswa\BackBundle\Entity\Group $groups)
+    {
+        $this->groups[] = $groups;
+
+        return $this;
+    }
+
+    /**
+     * Remove groups
+     *
+     * @param \Troiswa\BackBundle\Entity\Group $groups
+     */
+    public function removeGroup(\Troiswa\BackBundle\Entity\Group $groups)
+    {
+        $this->groups->removeElement($groups);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * String representation of object
+     * @link http://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     * Mis en session par le Token
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+        ));
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * Constructs the object
+     * @link http://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return void
+     * Extraction des données mise en session
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            ) = unserialize($serialized);
     }
 }

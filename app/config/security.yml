@@ -19,8 +19,8 @@ security:
 
     role_hierarchy:
       ROLE_SUPERADMIN: [ROLE_ADMIN]
-      ROLE_ADMIN: [ROLE_USER, ROLE_ALLOWED_TO_SWITCH]
-      ROLE_USER: [ROLE_ALLOWED_TO_SWITCH]
+      ROLE_ADMIN: [ROLE_CLIENT, ROLE_ALLOWED_TO_SWITCH]
+      ROLE_CLIENT: [ROLE_USER]
 
     providers:
         in_memory:
@@ -81,4 +81,4 @@ security:
 
     access_control:
       - { path: ^/admin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/admin, role: ROLE_USER }
+      - { path: ^/admin, role: ROLE_CLIENT }

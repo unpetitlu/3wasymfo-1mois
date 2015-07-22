@@ -31,11 +31,6 @@ class UserType extends AbstractType
                 'second_options' => array('label' => 'Repeat Password'),
             ))
             ->add('sexe', 'gender')
-            ->add('coupon', 'entity',
-                [
-                    'class' => 'TroiswaBackBundle:UserCoupon',
-                    'property' => 'coupon'
-                ]);
         ;
     }
     

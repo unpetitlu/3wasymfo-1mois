@@ -8,14 +8,14 @@ use Doctrine\ORM\Mapping as ORM;
  * Coupon
  *
  * @ORM\Table(name="user_coupon")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Repository\UserCouponRepository")
  */
 class UserCoupon
 {
     /**
      * @var \User
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="coupon")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="usercoupon")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
@@ -24,7 +24,7 @@ class UserCoupon
     /**
      * @var \Coupon
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Coupon")
+     * @ORM\ManyToOne(targetEntity="Coupon", inversedBy="usercoupon")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_coupon", referencedColumnName="id")
      * })
@@ -36,6 +36,11 @@ class UserCoupon
      * @ORM\Column(name="used", type="boolean")
      */
     protected $used;
+
+    public function __construct()
+    {
+        $this->used = 0;
+    }
 
     /**
      * Set used

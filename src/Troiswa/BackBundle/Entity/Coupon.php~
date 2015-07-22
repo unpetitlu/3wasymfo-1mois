@@ -49,6 +49,12 @@ class Coupon
      */
     private $dateValide;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="UserCoupon", mappedBy="coupon")
+     */
+    private $usercoupon;
+
 
     /**
      * Get id
@@ -127,5 +133,33 @@ class Coupon
     public function getDateValide()
     {
         return $this->dateValide;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return Coupon
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string 
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    public function __toString()
+    {
+        return $this->code;
     }
 }

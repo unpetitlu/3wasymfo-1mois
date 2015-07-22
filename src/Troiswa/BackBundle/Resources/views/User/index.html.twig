@@ -15,6 +15,7 @@
                 <th>Login</th>
                 <th>Address</th>
                 <th>Password</th>
+                <th>Activé/Désactiver</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                 <td>{{ entity.login }}</td>
                 <td>{{ entity.address }}</td>
                 <td>{{ entity.password }}</td>
+                <td>{% if entity.enabled == true %}OUI{% else %}NON{% endif %}</td>
                 <td>
                 <ul>
                     <li>
@@ -37,6 +39,9 @@
                     </li>
                     <li>
                         <a href="{{ path('troiswa_back_user_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('troiswa_back_user_activate', { 'id': entity.id }) }}">Activer/Desactiver</a>
                     </li>
                 </ul>
                 </td>
