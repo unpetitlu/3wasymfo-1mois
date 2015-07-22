@@ -25,114 +25,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.90196" vertical-offset="6185" max-vertical-offset="10560">
-              <caret line="446" column="38" selection-start-line="446" selection-start-column="38" selection-end-line="446" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.37485582" vertical-offset="6170" max-vertical-offset="10575">
+              <caret line="433" column="5" selection-start-line="433" selection-start-column="5" selection-end-line="433" selection-end-column="5" />
               <folding>
                 <element signature="e#45#93#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/ProductType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.75" vertical-offset="339" max-vertical-offset="1275">
-              <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
-              <folding>
-                <element signature="e#43#77#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TextToTagTransformer.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/DataTransformer/TextToTagTransformer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25605536" vertical-offset="303" max-vertical-offset="1170">
-              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-              <folding>
-                <element signature="e#59#90#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserEditType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/UserEditType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.375" vertical-offset="0" max-vertical-offset="1230">
-              <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-              <folding>
-                <element signature="e#43#83#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Controller/UserController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.125" vertical-offset="2430" max-vertical-offset="4215">
-              <caret line="191" column="45" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="45" />
-              <folding>
-                <element signature="e#49#94#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserCouponType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/UserCouponType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="735">
-              <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-              <folding>
-                <element signature="e#43#83#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TagType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/TagType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="645">
-              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Coupon.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Coupon.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-29.25" vertical-offset="1998" max-vertical-offset="3180">
-              <caret line="180" column="20" selection-start-line="180" selection-start-column="20" selection-end-line="180" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserCoupon.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/UserCoupon.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="12.625" vertical-offset="918" max-vertical-offset="1785">
-              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserCouponRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Repository/UserCouponRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="345">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -572,15 +472,15 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -634,13 +534,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -726,7 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.051724" vertical-offset="3397" max-vertical-offset="6588">
           <caret line="226" column="36" selection-start-line="226" selection-start-column="36" selection-end-line="226" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -805,7 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.6034484" vertical-offset="751" max-vertical-offset="5202">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,7 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="891">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -912,7 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="603" max-vertical-offset="1470">
           <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -920,9 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="3660">
           <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-          <folding>
-            <marker date="1437504857000" expanded="true" signature="-1:-1" placeholder="SELECT a FRO..TroiswaBackBundle..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -930,9 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-19.625" vertical-offset="9" max-vertical-offset="900">
           <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-          <folding>
-            <element signature="e#43#83#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -940,7 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34602076" vertical-offset="0" max-vertical-offset="867">
           <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,9 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39285713" vertical-offset="5505" max-vertical-offset="6345">
           <caret line="389" column="33" selection-start-line="389" selection-start-column="25" selection-end-line="389" selection-end-column="33" />
-          <folding>
-            <element signature="e#45#77#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -958,7 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="1485">
           <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -966,13 +851,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.75" vertical-offset="78" max-vertical-offset="1455">
           <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Repository/UserCouponRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="345">
+        <state vertical-scroll-proportion="0.25951558" vertical-offset="0" max-vertical-offset="867">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
@@ -980,7 +864,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Coupon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.25" vertical-offset="1998" max-vertical-offset="3180">
+        <state vertical-scroll-proportion="0.80968857" vertical-offset="1998" max-vertical-offset="3180">
           <caret line="180" column="20" selection-start-line="180" selection-start-column="20" selection-end-line="180" selection-end-column="20" />
           <folding />
         </state>
@@ -988,7 +872,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/UserCouponType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="735">
+        <state vertical-scroll-proportion="0.34602076" vertical-offset="0" max-vertical-offset="867">
           <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
           <folding>
             <element signature="e#43#83#0#PHP" expanded="true" />
@@ -998,7 +882,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/TagType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="645">
+        <state vertical-scroll-proportion="0.06920415" vertical-offset="0" max-vertical-offset="867">
           <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
           <folding />
         </state>
@@ -1006,7 +890,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/UserEditType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.375" vertical-offset="0" max-vertical-offset="1230">
+        <state vertical-scroll-proportion="0.25605536" vertical-offset="363" max-vertical-offset="1230">
           <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
           <folding>
             <element signature="e#43#83#0#PHP" expanded="true" />
@@ -1016,7 +900,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.125" vertical-offset="2430" max-vertical-offset="4215">
+        <state vertical-scroll-proportion="0.5017301" vertical-offset="2430" max-vertical-offset="4215">
           <caret line="191" column="45" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="45" />
           <folding>
             <element signature="e#49#94#0#PHP" expanded="true" />
@@ -1026,25 +910,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/UserCoupon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.625" vertical-offset="918" max-vertical-offset="1785">
+        <state vertical-scroll-proportion="-0.34948096" vertical-offset="918" max-vertical-offset="1785">
           <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.90196" vertical-offset="6185" max-vertical-offset="10560">
-          <caret line="446" column="38" selection-start-line="446" selection-start-column="38" selection-end-line="446" selection-end-column="38" />
-          <folding>
-            <element signature="e#45#93#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/ProductType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.75" vertical-offset="339" max-vertical-offset="1275">
+        <state vertical-scroll-proportion="0.0" vertical-offset="339" max-vertical-offset="1275">
           <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
           <folding>
             <element signature="e#43#77#0#PHP" expanded="true" />
@@ -1054,10 +928,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/DataTransformer/TextToTagTransformer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25605536" vertical-offset="303" max-vertical-offset="1170">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.57093424" vertical-offset="0" max-vertical-offset="1170">
+          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
           <folding>
             <element signature="e#59#90#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37485582" vertical-offset="6170" max-vertical-offset="10575">
+          <caret line="433" column="5" selection-start-line="433" selection-start-column="5" selection-end-line="433" selection-end-column="5" />
+          <folding>
+            <element signature="e#45#93#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

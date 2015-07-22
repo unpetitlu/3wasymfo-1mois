@@ -434,6 +434,7 @@ class User implements AdvancedUserInterface, \Serializable
     {
         if (!$this->hasAlreadyCoupon($usercoupon))
         {
+            $usercoupon->setUser($this);
             $this->usercoupon[] = $usercoupon;
         }
 
@@ -450,7 +451,7 @@ class User implements AdvancedUserInterface, \Serializable
             }
         }
 
-        return true;
+        return false;
     }
 
     /**
