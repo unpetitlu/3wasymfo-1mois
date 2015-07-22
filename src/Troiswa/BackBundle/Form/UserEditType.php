@@ -5,7 +5,6 @@ namespace Troiswa\BackBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Troiswa\BackBundle\Form\DataTransformer\CouponToUserCouponTransformer;
 use Troiswa\BackBundle\Repository\UserCouponRepository;
 
 class UserEditType extends AbstractType
@@ -16,7 +15,6 @@ class UserEditType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $transformer = new CouponToUserCouponTransformer();
 
 
         $builder
@@ -33,9 +31,16 @@ class UserEditType extends AbstractType
                     'class' => 'TroiswaBackBundle:Group',
                     'property' => 'name',
                     'multiple' => true
+                ])
+            ->add('usercoupon', 'collection',
+                [
+                    'type' => new UserCouponType(),
+                    'allow_add'    => true,
+                    'allow_delete' => true,
+                    'by_reference' => false
                 ]);
 
-        $builder->add(
+        /*$builder->add(
             $builder->create('usercoupon', 'entity',
                 [
                     'class' => 'TroiswaBackBundle:UserCoupon',
@@ -48,6 +53,7 @@ class UserEditType extends AbstractType
                 ])
                 ->addModelTransformer($transformer)
         );
+        */
     }
 
     /**

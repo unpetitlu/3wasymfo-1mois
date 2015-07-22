@@ -39,7 +39,7 @@ class UserCoupon
 
     public function __construct()
     {
-        $this->used = 0;
+        $this->used = false;
     }
 
     /**

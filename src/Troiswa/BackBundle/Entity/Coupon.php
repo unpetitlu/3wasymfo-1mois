@@ -178,6 +178,7 @@ class Coupon
      */
     public function addUsercoupon(\Troiswa\BackBundle\Entity\UserCoupon $usercoupon)
     {
+        die('lala');
         $this->usercoupon[] = $usercoupon;
 
         return $this;

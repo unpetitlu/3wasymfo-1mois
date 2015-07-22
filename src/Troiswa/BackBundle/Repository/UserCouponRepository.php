@@ -13,12 +13,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserCouponRepository extends EntityRepository
 {
-    public function getALlCouponFormType()
-    {
-        // Retourne simplement le queryBuilder car utiliser dans un formType
-        return $this->getEntityManager()->createQueryBuilder()
-                ->select('uc, coup')
-                ->from('TroiswaBackBundle:Coupon', 'coup')
-                ->leftJoin('coup.usercoupon', 'uc');
-    }
+
 }

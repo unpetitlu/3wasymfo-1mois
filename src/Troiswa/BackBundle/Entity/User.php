@@ -96,7 +96,7 @@ class User implements AdvancedUserInterface, \Serializable
     */
     private $usercoupon;
 
-    private $oldusercoupon;
+    private $oldCoupons;
 
     /**
      * @var boolean
@@ -146,6 +146,8 @@ class User implements AdvancedUserInterface, \Serializable
 
         //$this->salt = md5(uniqid(null, true));
         //$this->token = sha1(uniqid(null, true).microtime());
+
+        $this->oldCoupons = new ArrayCollection();
     }
 
 
@@ -430,13 +432,25 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function addUsercoupon(\Troiswa\BackBundle\Entity\UserCoupon $usercoupon)
     {
-        $usercoupon->setUser($this);
-
-        if (!in_array($usercoupon->getCoupon()->getId(), $this->oldusercoupon)) {
+        if (!$this->hasAlreadyCoupon($usercoupon))
+        {
             $this->usercoupon[] = $usercoupon;
         }
 
         return $this;
+    }
+
+    private function hasAlreadyCoupon($usercoupon)
+    {
+        foreach($this->usercoupon as $coupon)
+        {
+            if ($coupon->getCoupon()->getId() == $usercoupon->getCoupon()->getId())
+            {
+                return true;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -446,9 +460,13 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function removeUsercoupon(\Troiswa\BackBundle\Entity\UserCoupon $usercoupon)
     {
-        $this->oldusercoupon[] = $usercoupon->getCoupon()->getId();
-
         $this->usercoupon->removeElement($usercoupon);
+        $this->oldCoupons[] = $usercoupon;
+    }
+
+    public function getOldCoupons()
+    {
+        return $this->oldCoupons;
     }
 
     /**

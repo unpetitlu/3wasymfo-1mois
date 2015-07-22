@@ -186,6 +186,18 @@ class UserController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+
+            // Remove des anciens tags
+            $oldTags = $entity->getOldCoupons();
+            if ($oldTags)
+            {
+                foreach ($oldTags as $value) {
+                    $em->remove($value);
+                }
+            }
+
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('troiswa_back_user_edit', array('id' => $id)));
