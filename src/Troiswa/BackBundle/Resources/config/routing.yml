@@ -1,3 +1,7 @@
+troiswa_back_coupon:
+    resource: "@TroiswaBackBundle/Resources/config/routing/coupon.yml"
+    prefix:   /coupon
+
 troiswa_back_resource_user:
     resource: "@TroiswaBackBundle/Resources/config/routing/user.yml"
     prefix:   /user

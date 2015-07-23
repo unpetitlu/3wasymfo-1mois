@@ -1,0 +1,30 @@
+coupon:
+    path:     /
+    defaults: { _controller: "TroiswaBackBundle:Coupon:index" }
+
+coupon_show:
+    path:     /{id}/show
+    defaults: { _controller: "TroiswaBackBundle:Coupon:show" }
+
+coupon_new:
+    path:     /new
+    defaults: { _controller: "TroiswaBackBundle:Coupon:new" }
+
+coupon_create:
+    path:     /create
+    defaults: { _controller: "TroiswaBackBundle:Coupon:create" }
+    methods:  POST
+
+coupon_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "TroiswaBackBundle:Coupon:edit" }
+
+coupon_update:
+    path:     /{id}/update
+    defaults: { _controller: "TroiswaBackBundle:Coupon:update" }
+    methods:  [POST, PUT]
+
+coupon_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "TroiswaBackBundle:Coupon:delete" }
+    methods:  [POST, DELETE]
