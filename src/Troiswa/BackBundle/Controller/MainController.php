@@ -13,17 +13,7 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        /*
-        $user = new User();
-        $factory = $this->get('security.encoder_factory');
-
-        $encoder = $factory->getEncoder($user);
-        $password = $encoder->encodePassword('admin', null);
-        echo $password;
-        die;
-        */
-
-        // $user = $this->getUser();
+        // $user = $this->getUser()
         
         return $this->render('TroiswaBackBundle:Main:index.html.twig');
     }

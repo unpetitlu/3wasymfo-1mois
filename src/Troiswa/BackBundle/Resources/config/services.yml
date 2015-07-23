@@ -8,6 +8,9 @@ services:
 #        class: Troiswa\BackBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
 
+    troiswa.functions.util:
+          class: Troiswa\BackBundle\Util\Utility
+
     troiswa.email: #Nom du service
       class: Troiswa\BackBundle\Email\Email #class du Service
       arguments: ["@mailer", "@twig"]
