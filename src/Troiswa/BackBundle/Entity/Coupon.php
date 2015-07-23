@@ -49,6 +49,12 @@ class Coupon
      */
     private $dateValide;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="UserCoupon", mappedBy="coupon")
+     */
+    private $usercoupon;
+
 
     /**
      * Get id
@@ -155,5 +161,46 @@ class Coupon
     public function __toString()
     {
         return $this->code;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->usercoupon = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add usercoupon
+     *
+     * @param \Troiswa\BackBundle\Entity\UserCoupon $usercoupon
+     * @return Coupon
+     */
+    public function addUsercoupon(\Troiswa\BackBundle\Entity\UserCoupon $usercoupon)
+    {
+        die('lala');
+        $this->usercoupon[] = $usercoupon;
+
+        return $this;
+    }
+
+    /**
+     * Remove usercoupon
+     *
+     * @param \Troiswa\BackBundle\Entity\UserCoupon $usercoupon
+     */
+    public function removeUsercoupon(\Troiswa\BackBundle\Entity\UserCoupon $usercoupon)
+    {
+        $this->usercoupon->removeElement($usercoupon);
+    }
+
+    /**
+     * Get usercoupon
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsercoupon()
+    {
+        return $this->usercoupon;
     }
 }

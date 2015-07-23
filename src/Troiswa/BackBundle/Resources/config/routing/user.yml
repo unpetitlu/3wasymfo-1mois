@@ -28,3 +28,8 @@ troiswa_back_user_delete:
     path:     /{id}/delete
     defaults: { _controller: "TroiswaBackBundle:User:delete" }
     methods:  [POST, DELETE]
+
+
+troiswa_back_user_activate:
+    path:     /{id}/activate
+    defaults: { _controller: "TroiswaBackBundle:User:activate" }

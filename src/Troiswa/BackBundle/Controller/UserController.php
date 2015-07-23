@@ -6,7 +6,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Troiswa\BackBundle\Entity\User;
+use Troiswa\BackBundle\Form\UserEditType;
 use Troiswa\BackBundle\Form\UserType;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * User controller.
@@ -31,7 +34,7 @@ class UserController extends Controller
     }
     /**
      * Creates a new User entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function createAction(Request $request)
     {
@@ -40,8 +43,19 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            // ENCRYPTE PASSWORD AND CONNECT
+
             $em = $this->getDoctrine()->getManager();
+
+            // Hash password
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($entity);
+            $newPassword = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
+            $entity->setPassword($newPassword);
+
+            // Choice ROLE
+            $group = $em->getRepository('TroiswaBackBundle:Group')->findOneByName('client');
+            $entity->addGroup($group);
+
             $em->persist($entity);
             $em->flush();
 
@@ -75,7 +89,7 @@ class UserController extends Controller
 
     /**
      * Displays a form to create a new User entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction()
     {
@@ -98,6 +112,7 @@ class UserController extends Controller
 
         $entity = $em->getRepository('TroiswaBackBundle:User')->find($id);
 
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
@@ -112,7 +127,7 @@ class UserController extends Controller
 
     /**
      * Displays a form to edit an existing User entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction($id)
     {
@@ -143,7 +158,7 @@ class UserController extends Controller
     */
     private function createEditForm(User $entity)
     {
-        $form = $this->createForm(new UserType(), $entity, array(
+        $form = $this->createForm(new UserEditType(), $entity, array(
             'action' => $this->generateUrl('troiswa_back_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -154,7 +169,7 @@ class UserController extends Controller
     }
     /**
      * Edits an existing User entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function updateAction(Request $request, $id)
     {
@@ -171,6 +186,18 @@ class UserController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+
+            // Remove des anciens tags
+            $oldTags = $entity->getOldCoupons();
+            if ($oldTags)
+            {
+                foreach ($oldTags as $value) {
+                    $em->remove($value);
+                }
+            }
+
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('troiswa_back_user_edit', array('id' => $id)));
@@ -184,7 +211,7 @@ class UserController extends Controller
     }
     /**
      * Deletes a User entity.
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, $id)
     {
@@ -221,5 +248,28 @@ class UserController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    /**
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function activateAction(User $user)
+    {
+        if ($user->getEnabled() == true)
+        {
+            $user->setEnabled(false);
+        }
+        else
+        {
+            $user->setEnabled(true);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
+        return $this->redirectToRoute('troiswa_back_user');
+
     }
 }

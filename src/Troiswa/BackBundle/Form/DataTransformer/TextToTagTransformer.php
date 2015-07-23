@@ -20,7 +20,7 @@ class TextToTagTransformer implements DataTransformerInterface
     */
     public function __construct($om)
     {
-        $this->om = $om['em'];
+        $this->om = $om;
     }
 
     /**
@@ -29,9 +29,9 @@ class TextToTagTransformer implements DataTransformerInterface
     * @param  Issue|null $issue
     * @return string
     */
-    public function transform($issue)
+    public function transform($tags)
     {
-        return $issue;
+        return $tags;
 
     }
 
@@ -42,27 +42,28 @@ class TextToTagTransformer implements DataTransformerInterface
     * @return Issue|null
     * @throws TransformationFailedException if object (issue) is not found.
     */
-    public function reverseTransform($number)
+    public function reverseTransform($tags)
     {
         $finalTag = [];
-        if (!$number) {
+        if (!$tags) {
             return null;
         }
 
-        foreach($number as $num)
+        foreach($tags as $onetag)
         {
-
+            // Vérification de son existence dans la table tag
             $tag = $this->om
                 ->getRepository('TroiswaBackBundle:Tag')
-                ->findOneBy(array('word' => $num->getWord()))
+                ->findOneBy(array('word' => $onetag->getWord()))
             ;
 
-            if ($tag) {
+            if ($tag)
+            {
                 array_push($finalTag, $tag);
             }
             else
             {
-                array_push($finalTag, $num);
+                array_push($finalTag, $onetag);
             }
 
         }
