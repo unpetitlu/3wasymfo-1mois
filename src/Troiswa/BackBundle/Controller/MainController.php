@@ -14,12 +14,19 @@ class MainController extends Controller
     public function indexAction()
     {
         // $user = $this->getUser()
-        
+
+        $_SESSION['panier'] = [
+                                ['quantity' => 0, 'id_product' => 1],
+                                ['quantity' => 0, 'id_product' => 1],
+                                ['quantity' => 0, 'id_product' => 1],
+                              ];
+
         return $this->render('TroiswaBackBundle:Main:index.html.twig');
     }
 
     public function contactAction(Request $request)
     {
+
         $formContact = $this->createFormBuilder(null, ['attr' => ['novalidate' => 'novalidate']])
                             ->add('firstname', 'text', [
                                 "constraints" => new Assert\NotBlank()

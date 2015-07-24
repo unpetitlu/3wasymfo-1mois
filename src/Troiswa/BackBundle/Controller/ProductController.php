@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Troiswa\BackBundle\Entity\Product;
 use Troiswa\BackBundle\Form\ProductType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Troiswa\BackBundle\Listener\BaseListener;
+use Troiswa\BackBundle\Listener\MessagePostEvent;
 
 
 /**
@@ -110,7 +112,18 @@ class ProductController extends Controller
         }
         */
 
+        // On crée l'évènement avec ses 2 arguments
+        $event = new MessagePostEvent($entity->getId(), $this->getUser());
+
+        // On déclenche l'évènement
+        $this
+            ->get('event_dispatcher')
+            ->dispatch(BaseListener::messagePost, $event)
+        ;
+
+
         $deleteForm = $this->createDeleteForm($entity->getId());
+
 
         return $this->render('TroiswaBackBundle:Product:show.html.twig', array(
             'entity'      => $entity,

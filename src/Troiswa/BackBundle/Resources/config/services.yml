@@ -88,3 +88,14 @@ services:
         public:     false
         tags:
             - { name: security.voter }
+
+
+    troiswa.back.checkmessage_processor:
+            class:     Troiswa\BackBundle\Listener\CheckMessageProcessor
+            arguments: [@mailer]
+
+    troiswa.back.checkmessage_listener:
+            class:     Troiswa\BackBundle\Listener\CheckMessageListener
+            arguments: [@troiswa.back.checkmessage_processor, [1, 2, 3]]
+            tags:
+                - { name: kernel.event_listener, event: troiswa.base_event.post_message, method: processMessage }

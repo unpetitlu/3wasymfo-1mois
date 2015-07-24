@@ -1,0 +1,10 @@
+troiswa_back_cart_add:
+    path: /add/{id}
+    defaults: { _controller: "TroiswaBackBundle:Cart:addCart" }
+    methods: POST
+    requirements:
+      id: \d+
+
+troiswa_back_cart:
+    path: /
+    defaults: { _controller: "TroiswaBackBundle:Cart:index" }
