@@ -17,30 +17,10 @@ class CartController extends Controller
     {
         // Récupération des informations du formulaire d'ajout au panier
         $qty = $request->request->getInt('qty');
-
-        if ($qty > 0)
-        {
-            $session = $request->getSession();
-
-            if ($session->get('cart'))
-            {
-                $cart = json_decode($session->get('cart'), true);
-            }
-            else
-            {
-                $cart = [];
-            }
-
-            if (array_key_exists($product->getId(), $cart))
-            {
-                $qty += $cart[$product->getId()]['quantity'];
-            }
-
-            $cart[$product->getId()] = $qty;
-
-            $session->set('cart', json_encode($cart));
-
-        }
+        // Récupération du service panier
+        $cart = $this->get('troiswa.back.cart');
+        // Ajout du produit
+        $cart->add($product, $qty);
 
         return $this->redirectToRoute('troiswa_back_cart');
     }
@@ -58,6 +38,15 @@ class CartController extends Controller
             $products = $em->getRepository('TroiswaBackBundle:Product')->findProductByIds($idProducts);
         }
 
-        return $this->render('TroiswaBackBundle:Cart:index.html.twig', compact('products'));
+        return $this->render('TroiswaBackBundle:Cart:index.html.twig', compact('products', 'cart'));
+    }
+
+    public function deleteAction(Product $product)
+    {
+        $cart = $this->get('troiswa.back.cart');
+
+        $cart->delete($product);
+
+        return $this->redirectToRoute('troiswa_back_cart');
     }
 }

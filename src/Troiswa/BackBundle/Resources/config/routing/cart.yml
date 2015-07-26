@@ -8,3 +8,9 @@ troiswa_back_cart_add:
 troiswa_back_cart:
     path: /
     defaults: { _controller: "TroiswaBackBundle:Cart:index" }
+
+troiswa_back_cart_delete:
+    path: /delete/{id}
+    defaults: { _controller: "TroiswaBackBundle:Cart:delete" }
+    requirements:
+      id: \d+

@@ -14,7 +14,6 @@ use Troiswa\BackBundle\Validator\StrongPassword;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Troiswa\BackBundle\Repository\UserRepository")
- * @ORM\HasLifecycleCallbacks
  */
 class User implements AdvancedUserInterface, \Serializable
 {

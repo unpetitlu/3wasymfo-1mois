@@ -30,6 +30,12 @@ services:
             tags:
                 - { name: form.type, alias: gender }
 
+    troiswa.form.type.entity_hidden:
+       class: Troiswa\BackBundle\Form\Type\EntityHiddenType
+       arguments: ["@doctrine.orm.entity_manager"]
+       tags:
+          - { name: form.type, alias: entity_hidden }
+
 
     troiswa.validator.position.category:
           class: Troiswa\BackBundle\Validator\PositionCategoryValidator
@@ -37,7 +43,7 @@ services:
           tags:
             - { name: validator.constraint_validator, alias: troiswa_validator_position_cat }
 
-    troiswa.backend.notification:
+    troiswa.back.notification:
             # Classe avec Namespaces
             class: Troiswa\BackBundle\Notification\Notification
             arguments: ["@session"]
@@ -52,7 +58,7 @@ services:
             # Service de notification que l'on a crée juste en dessus
             # ATTENTION: L'injection des dépendances se fait si mon service n'est pas deja injecté ,
             # notement par le tag qui est associ à mon service
-            arguments: ["@troiswa.backend.notification"]
+            arguments: ["@troiswa.back.notification"]
 
             # Ma classe utilisera le mecanisme d'écouteur de Symfony 2
             tags:
@@ -90,6 +96,7 @@ services:
             - { name: security.voter }
 
 
+    # listener perso
     troiswa.back.checkmessage_processor:
             class:     Troiswa\BackBundle\Listener\CheckMessageProcessor
             arguments: [@mailer]
@@ -99,3 +106,14 @@ services:
             arguments: [@troiswa.back.checkmessage_processor, [1, 2, 3]]
             tags:
                 - { name: kernel.event_listener, event: troiswa.base_event.post_message, method: processMessage }
+
+
+    troiswa.back.cart:
+            class: Troiswa\BackBundle\Util\Cart
+            arguments: ["@session"]
+
+
+    troiswa.back.twig.util_extension:
+            class: Troiswa\BackBundle\Twig\UtilExtension
+            tags:
+                - { name: twig.extension }

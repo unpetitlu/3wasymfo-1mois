@@ -28,3 +28,8 @@ troiswa_back_product_delete:
     path:     /{id}/delete
     defaults: { _controller: "TroiswaBackBundle:Product:delete" }
     methods:  [POST, DELETE]
+
+
+troiswa_back_product_comment_delete:
+    path:     /{idprod}/comment/{idcom}/delete
+    defaults: { _controller: "TroiswaBackBundle:Product:commentdelete" }
