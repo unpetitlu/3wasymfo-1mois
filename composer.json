@@ -21,7 +21,9 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
         "imagine/imagine": "dev-master",
-        "knplabs/knp-paginator-bundle": "^2.4"
+        "knplabs/knp-paginator-bundle": "^2.4",
+        "doctrine/migrations": "1.0.*@dev",
+        "doctrine/doctrine-migrations-bundle": "1.0.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

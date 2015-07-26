@@ -2,29 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e600e80-f254-4912-a669-785d9f44cdc5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Util/Cart.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Form/Type/EntityHiddenType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Form/DataTransformer/EntityToIdTransformer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Twig/UtilExtension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/views/Product/comments.html.twig" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/Symfony3wa.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Controller/CartController.php" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Controller/CartController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Listener/CheckMessageProcessor.php" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Listener/CheckMessageProcessor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Controller/ProductController.php" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Controller/ProductController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Repository/ProductRepository.php" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Repository/ProductRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/config/routing/cart.yml" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/config/routing/cart.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/views/Cart/index.html.twig" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/views/Cart/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/config/routing/product.yml" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/config/routing/product.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/config/services.yml" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/config/services.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/views/Product/show.html.twig" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/views/Product/show.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Category.php" afterPath="$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Category.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Symfony3wa.iws" />
@@ -84,12 +65,57 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Comment.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Comment.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Comment.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6747405" vertical-offset="195" max-vertical-offset="2835">
+            <state vertical-scroll-proportion="-24.375" vertical-offset="195" max-vertical-offset="2835">
               <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="1110">
+              <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppKernel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.125" vertical-offset="0" max-vertical-offset="675">
+              <caret line="22" column="76" selection-start-line="22" selection-start-column="76" selection-end-line="22" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Category.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Category.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.899654" vertical-offset="0" max-vertical-offset="3495">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+              <folding>
+                <element signature="e#45#77#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Version20150726125534.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20150726125534.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="585">
+              <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+              <folding>
+                <marker date="1437908134000" expanded="true" signature="584:633" placeholder="ALTER TABLE category..." />
+                <marker date="1437908134000" expanded="true" signature="986:1006" placeholder="ALTER TABLE category..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,7 +125,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
               <caret line="32" column="35" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="35" />
-              <folding />
+              <folding>
+                <marker date="1437906991000" expanded="true" signature="737:889" placeholder="troiswa_back_product_delete:" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,54 +142,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/CommentType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="765">
-              <caret line="22" column="59" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
-              <folding>
-                <element signature="e#43#83#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntityHiddenType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/Type/EntityHiddenType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="825">
-              <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-              <folding>
-                <element signature="e#48#88#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenderType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/Type/GenderType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="570">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="39" />
-              <folding>
-                <element signature="e#48#102#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntityToIdTransformer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/DataTransformer/EntityToIdTransformer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.25" vertical-offset="18" max-vertical-offset="885">
-              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-              <folding>
-                <element signature="e#59#111#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -170,11 +150,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/app.php" />
-        <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/app/config/config_prod.yml" />
         <option value="$PROJECT_DIR$/app/config/config_dev.yml" />
-        <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/web/app_benchmark.php" />
         <option value="$PROJECT_DIR$/app/logs/prod.log" />
         <option value="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/views/Product/index.html.twig" />
@@ -221,6 +198,9 @@
         <option value="$PROJECT_DIR$/src/Troiswa/BackBundle/Resources/views/Product/comments.html.twig" />
         <option value="$PROJECT_DIR$/src/Troiswa/BackBundle/Controller/ProductController.php" />
         <option value="$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Comment.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/app/AppKernel.php" />
+        <option value="$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Category.php" />
       </list>
     </option>
   </component>
@@ -629,6 +609,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="3wasymfo-1mois" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="3wasymfo-1mois" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="3wasymfo-1mois" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="3wasymfo-1mois" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DoctrineMigrations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -761,27 +773,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/ProductType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.089655176" vertical-offset="570" max-vertical-offset="1440">
-          <caret line="41" column="37" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/TagType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08275862" vertical-offset="0" max-vertical-offset="870">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/UserCouponType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="897">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Form/UserType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.555555" vertical-offset="282" max-vertical-offset="1152">
@@ -936,14 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="555">
           <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/cache/dev/classes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="57245" max-vertical-offset="112140">
-          <caret line="3941" column="23" selection-start-line="3941" selection-start-column="16" selection-end-line="3941" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1115,7 +1098,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
           <caret line="32" column="35" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="35" />
-          <folding />
+          <folding>
+            <marker date="1437906991000" expanded="true" signature="737:889" placeholder="troiswa_back_product_delete:" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1149,9 +1134,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Comment.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6747405" vertical-offset="195" max-vertical-offset="2835">
+        <state vertical-scroll-proportion="-24.375" vertical-offset="195" max-vertical-offset="2835">
           <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="1110">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.125" vertical-offset="0" max-vertical-offset="675">
+          <caret line="22" column="76" selection-start-line="22" selection-start-column="76" selection-end-line="22" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20150726125534.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="585">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+          <folding>
+            <marker date="1437908134000" expanded="true" signature="584:633" placeholder="ALTER TABLE category..." />
+            <marker date="1437908134000" expanded="true" signature="986:1006" placeholder="ALTER TABLE category..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Troiswa/BackBundle/Entity/Category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.899654" vertical-offset="0" max-vertical-offset="3495">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="e#45#77#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
