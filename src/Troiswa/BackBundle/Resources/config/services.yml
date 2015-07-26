@@ -117,3 +117,9 @@ services:
             class: Troiswa\BackBundle\Twig\UtilExtension
             tags:
                 - { name: twig.extension }
+
+
+    troiswa.back.subscriber_main:
+            class:     Troiswa\BackBundle\Subscriber\MainSubscriber
+            tags:
+              - { name: kernel.event_subscriber }
