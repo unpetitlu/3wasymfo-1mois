@@ -1,7 +1,11 @@
 {% extends "TroiswaBackBundle::layout.html.twig" %}
 
+{% import "TroiswaBackBundle:Macro:functions.html.twig" as macro %}
+
 {% block content -%}
     <h1>Category</h1>
+
+    {{ macro.link() }}
 
     <table class="record_properties">
         <tbody>
@@ -34,6 +38,9 @@
         <a href="{{ path('category_edit', { 'id': entity.id }) }}">
             Edit
         </a>
+    </li>
+    <li>
+        {{ macro.link(path('category'), 'Back to the list avec utilisation de macro') }}
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>

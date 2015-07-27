@@ -17,6 +17,7 @@ class CheckMessageProcessor
     // Méthode pour notifier par e-mail un administrateur
     public function notifyEmail($message, UserInterface $user)
     {
+        /*
         $message = \Swift_Message::newInstance()
             ->setSubject("Nouveau message d'un utilisateur surveillé")
             ->setFrom('admin@votresite.com')
@@ -24,6 +25,7 @@ class CheckMessageProcessor
             ->setBody("L'utilisateur surveillé '".$user->getUsername()."' a posté le message suivant : '".$message."'");
 
         $this->mailer->send($message);
+        */
     }
 
     // Méthode pour censurer un message (supprimer les mots interdits)

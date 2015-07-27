@@ -146,4 +146,14 @@ class ProductRepository extends EntityRepository
         return $query->getResult();
         */
     }
+
+    public function findProductByIds($idProduct)
+    {
+        $query = $this->createQueryBuilder('prod')
+                ->where('prod.id IN (:value)')
+                ->setParameter('value', $idProduct)
+                ->getQuery();
+
+        return $query->getResult();
+    }
 }

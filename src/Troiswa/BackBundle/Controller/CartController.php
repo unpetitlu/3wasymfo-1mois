@@ -2,6 +2,7 @@
 
 namespace Troiswa\BackBundle\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Troiswa\BackBundle\Entity\Product;
@@ -17,39 +18,19 @@ class CartController extends Controller
     {
         // Récupération des informations du formulaire d'ajout au panier
         $qty = $request->request->getInt('qty');
-
-        if ($qty > 0)
-        {
-            $session = $request->getSession();
-
-            if ($session->get('cart'))
-            {
-                $cart = json_decode($session->get('cart'), true);
-            }
-            else
-            {
-                $cart = [];
-            }
-
-            if (array_key_exists($product->getId(), $cart))
-            {
-                $qty += $cart[$product->getId()]['quantity'];
-            }
-
-            $cart[$product->getId()] = $qty;
-
-            $session->set('cart', json_encode($cart));
-
-        }
+        // Récupération du service panier
+        $cart = $this->get('troiswa.back.cart');
+        // Ajout du produit
+        $cart->add($product, $qty);
 
         return $this->redirectToRoute('troiswa_back_cart');
     }
 
     public function indexAction(Request $request)
     {
+        $cartUtil = $this->get('troiswa.back.cart');
 
-        $session = $request->getSession();
-        $cart = json_decode($session->get('cart'), true);
+        $cart = $cartUtil->getCart();
         $products = [];
         if ($cart)
         {
@@ -58,6 +39,20 @@ class CartController extends Controller
             $products = $em->getRepository('TroiswaBackBundle:Product')->findProductByIds($idProducts);
         }
 
-        return $this->render('TroiswaBackBundle:Cart:index.html.twig', compact('products'));
+        return $this->render('TroiswaBackBundle:Cart:index.html.twig', compact('products', 'cart'));
+    }
+
+    public function deleteAction(Product $product, Request $request)
+    {
+        $cart = $this->get('troiswa.back.cart');
+
+        $cart->delete($product);
+
+        if ($request->isXmlHttpRequest())
+        {
+            return new JsonResponse('Votre produit a bien été supprimé');
+        }
+
+        return $this->redirectToRoute('troiswa_back_cart');
     }
 }

@@ -1,0 +1,16 @@
+<div class="panel panel-default" id="comment-{{ comment.id }}">
+    <div class="panel-body">
+        {{ comment.content }}
+        <p class="text-right">
+            <button class="btn btn-primary reply" data-idproduct="{{ comment.id }}">Répondre</button>
+            <a href="{{ path('troiswa_back_product_comment_delete', {idprod : idproduct, idcom:comment.id}) }}" class="btn btn-danger">Supprimer</a>
+        </p>
+    </div>
+</div>
+<div style="margin-left: 50px">
+    {% if comment.children is defined %}
+        {% for comment in comment.children %}
+            {% include 'TroiswaBackBundle:Product:comments.html.twig' with {'comment' : comment, 'idproduct' : idproduct} only %}
+        {% endfor %}
+    {% endif %}
+</div>

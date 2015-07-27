@@ -51,6 +51,17 @@ class Category
      */
     private $products;
 
+    /*
+     * php app/console doctrine:migrations:diff afin de créer une nouvelle migration dans app/DoctrineMigrations
+     * php app/console doctrine:migrations:migrate afin de réellement appliquer la dernière version à la BDD
+     * php app/console doctrine:migrations:latest afin d'avoir le dernier nom de la migration
+     * php app/console doctrine:migrations:execute 20150726125534 --down afin de revenir en arrière. Remplacer 20150726125534 par le nom de la version
+    /**
+     * @ORM\Column(name="bidule", type="text")
+
+    private $bidule;
+    */
+
 
 
     /****************** CONTRAINTES ****************/

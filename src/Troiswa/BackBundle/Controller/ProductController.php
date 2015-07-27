@@ -2,10 +2,13 @@
 
 namespace Troiswa\BackBundle\Controller;
 
+use MyProject\Proxies\__CG__\stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Troiswa\BackBundle\Entity\Comment;
 use Troiswa\BackBundle\Entity\Product;
+use Troiswa\BackBundle\Form\CommentType;
 use Troiswa\BackBundle\Form\ProductType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Troiswa\BackBundle\Listener\BaseListener;
@@ -100,9 +103,10 @@ class ProductController extends Controller
      * Finds and displays a Product entity.
      * @ParamConverter("entity", options={"mapping": {"idprod": "id"}})
      */
-    public function showAction(Product $entity)
+    public function showAction(Product $entity, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+
 
         /*
          $entity = $em->getRepository('TroiswaBackBundle:Product')->find($id);
@@ -124,11 +128,52 @@ class ProductController extends Controller
 
         $deleteForm = $this->createDeleteForm($entity->getId());
 
+        $comment = new Comment();
+        $formComment = $this->createAndValidateComment($comment);
+        $formComment->handleRequest($request);
+        if ($formComment->isValid())
+        {
+            $em->persist($comment);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('success', 'Votre commentaire a bien été ajouté');
+
+            return $this->redirectToRoute('troiswa_back_product_show', ['idprod' => $entity->getId()]);
+        }
+
+        $comments = $em->getRepository('TroiswaBackBundle:Comment')->findByUser($this->getUser());
+
+        $comments_by_id = [];
+        foreach($comments as $comment)
+        {
+            $comments_by_id[$comment->getId()] = $comment;
+        }
+
+        foreach($comments as $key => $com)
+        {
+            if ($com->getParent() != NULL)
+            {
+                $comments_by_id[$com->getParent()->getId()]->children[] = $com; //$comments_by_id[$com->getParent()->getId()] fait référence à $comment dans le foreach du dessus
+                unset($comments[$key]);
+            }
+        }
 
         return $this->render('TroiswaBackBundle:Product:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'comment_form' => $formComment->createView(),
+            'comments' => $comments
         ));
+    }
+
+    private function createAndValidateComment($comment)
+    {
+        $user = $this->getUser();
+        $comment->setUser($user);
+        $formComment = $this->createForm(new CommentType(), $comment)
+                            ->add('submit', 'submit', ['label' => 'Ajouter un commentaire']);
+
+        return $formComment;
     }
 
     /**
@@ -250,5 +295,21 @@ class ProductController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    /**
+     * @ParamConverter("comment", options={"mapping": {"idcom": "id"}})
+     * @ParamConverter("product", options={"mapping": {"idprod": "id"}})
+     */
+    public function commentdeleteAction(Comment $comment, Product $product)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($comment);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', 'Votre commentaire a bien été supprimé');
+
+        return $this->redirectToRoute('troiswa_back_product_show', ['idprod' => $product->getId()]);
     }
 }

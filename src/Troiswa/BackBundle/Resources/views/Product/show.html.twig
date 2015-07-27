@@ -52,7 +52,50 @@
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
-
-
 </ul>
+
+    <hr>
+
+    <form method="POST" action="{{ path('troiswa_back_cart_add', {id:entity.id}) }}">
+        <input type="number" value="1" name="qty">
+        <button class="btn btn-primary">Ajouter au panier</button>
+    </form>
+
+    <hr>
+
+    <h4>Ajouter un commentaire</h4><br>
+    {{ form_start(comment_form, {attr : {id: 'form-comment'} }) }}
+    {{ form_widget(comment_form.parent, {id: "parent_id"}) }}
+    {{ form_end(comment_form) }}
+
+    <hr>
+
+    <h5>Listes des commentaires</h5>
+    {% for comment in comments %}
+        {% include 'TroiswaBackBundle:Product:comments.html.twig' with {'comment' : comment, 'idproduct' : entity.id} only %}
+    {% else %}
+        <div class="alert alert-info">Il n'y a pas de commentaire</div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function()
+        {
+           $('.reply').on('click', function(event)
+           {
+               event.preventDefault();
+               var $form = $('#form-comment');
+               var $this = $(this);
+               var parent_id = $this.attr('data-idproduct');
+               var comment = $('#comment-'+parent_id);
+
+               comment.after($form);
+               $('#parent_id').val(parent_id);
+
+           });
+        });
+    </script>
 {% endblock %}
