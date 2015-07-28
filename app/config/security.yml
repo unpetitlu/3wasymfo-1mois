@@ -17,6 +17,9 @@ security:
         cost: 15
 
 
+      FOS\UserBundle\Model\UserInterface: bcrypt
+
+
     role_hierarchy:
       ROLE_SUPERADMIN: [ROLE_ADMIN]
       ROLE_ADMIN: [ROLE_CLIENT, ROLE_ALLOWED_TO_SWITCH]
@@ -36,6 +39,10 @@ security:
           #entity: { class: TroiswaBackBundle:User, property: email }
           #Utilisation du UserRepository pour créer un fournisseur et ainsi utiliser le login et l'email
           entity: { class: TroiswaBackBundle:User }
+
+
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
     firewalls:
         dev:
@@ -79,6 +86,20 @@ security:
               domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
 
 
+        front:
+          pattern: ^/
+          form_login:
+              provider: fos_userbundle
+              csrf_provider: security.csrf.token_manager
+
+          logout: true
+          anonymous: true
+
+
     access_control:
       - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/admin, role: ROLE_CLIENT }
+
+      - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }

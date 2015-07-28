@@ -32,7 +32,7 @@
                             <input type="email" class="form-control" id="exampleInputEmail1" value="{{ cart[product.id].quantity }}">
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>{{ product.price }}</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>{{ product.price * cart[product.id].quantity }}</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong class="price-total">{{ product.price * cart[product.id].quantity }}</strong></td>
                         <td class="col-sm-1 col-md-1">
                             <a href="{{ path('troiswa_back_cart_delete', {id : product.id}) }}" class="btn btn-danger">
                                 <span class="glyphicon glyphicon-remove"></span> Remove
@@ -46,7 +46,7 @@
                     <td>   </td>
                     <td>   </td>
                     <td><h3>Total</h3></td>
-                    <td class="text-right"><h3><strong>{{ total|price(2) }}</strong></h3></td>
+                    <td class="text-right"><h3><strong id="totalProduct" data-currency="€">{{ total|price(2) }}</strong></h3></td>
                 </tr>
                 <tr>
                     <td>   </td>
@@ -78,19 +78,19 @@
            $('#detailCart').on('click', '.btn-danger', function(event){
                event.preventDefault();
 
+               var item = '.item-product';
                var $that = $(this);
-               var $href = $that.attr('href');
-               var $product = $that.closest('.item-product');
                var $table = $('#detailCart');
-               console.log($href);
+               var $totalProduct = $('#totalProduct');
+
                $.ajax({
-                   url: $href,
+                   url: $that.attr('href'),
                    dateType: 'json'
                }).done(function(data, textStatus, jqXHR){
                    console.log(data);
                    console.log(textStatus);
                    console.log(jqXHR);
-                   if ($table.find('.item-product').length <= 1)
+                   if ($table.find(item).length <= 1)
                    {
                        $table.fadeOut(700, function()
                        {
@@ -99,9 +99,16 @@
                    }
                    else
                    {
-                       $product.fadeOut(700, function () {
+                       $that.closest(item).fadeOut(700, function ()
+                       {
                            $(this).remove();
+                           var priceTotal = 0;
+                           $('.price-total').each(function(){
+                              priceTotal += parseFloat($(this).html());
+                           });
+                           $totalProduct.html(priceTotal.toFixed(2)+" "+$totalProduct.attr('data-currency'));
                        });
+
                    }
 
                });
