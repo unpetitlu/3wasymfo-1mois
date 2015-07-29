@@ -134,6 +134,13 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $groups;
 
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="dateAuth", type="datetime")
+     */
+    private $dateAuth;
+
 
     public function __construct()
     {
@@ -696,5 +703,28 @@ class User implements AdvancedUserInterface, \Serializable
         list (
             $this->id,
             ) = unserialize($serialized);
+    }
+
+    /**
+     * Set dateAuth
+     *
+     * @param \DateTime $dateAuth
+     * @return User
+     */
+    public function setDateAuth($dateAuth)
+    {
+        $this->dateAuth = $dateAuth;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAuth
+     *
+     * @return \DateTime 
+     */
+    public function getDateAuth()
+    {
+        return $this->dateAuth;
     }
 }

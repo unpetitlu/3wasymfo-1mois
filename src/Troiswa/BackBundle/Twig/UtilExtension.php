@@ -6,17 +6,25 @@ class UtilExtension extends \Twig_Extension
 {
     public function getFilters()
     {
-        return array(
+        return [
             'price' => new \Twig_Filter_Method($this, 'priceFilter'),
-            'gender' => new \Twig_Filter_Method($this, 'genderFilter')
-        );
+            'gender' => new \Twig_Filter_Method($this, 'genderFilter'),
+            'truncate'=> new \Twig_Filter_Method($this,'truncFilter'),
+        ];
     }
 
     public function getFunctions()
     {
-        return array(
+        return [
             'age' => new \Twig_Function_Method($this, 'ageFunction'),
-        );
+        ];
+    }
+
+    public function truncFilter($texte,$nbr = 50)
+    {
+
+        return (strlen($texte) > $nbr ? substr(substr($texte,0,$nbr),0,strrpos(substr($texte,0,$nbr)," "))." ..." : $texte);
+
     }
 
     public function ageFunction($date)

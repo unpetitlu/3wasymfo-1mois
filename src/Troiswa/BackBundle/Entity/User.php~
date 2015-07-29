@@ -92,9 +92,11 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
     *
-    * @ORM\OneToMany(targetEntity="UserCoupon", mappedBy="user")
+    * @ORM\OneToMany(targetEntity="UserCoupon", mappedBy="user", cascade={"persist"})
     */
     private $usercoupon;
+
+    private $oldCoupons;
 
     /**
      * @var boolean
@@ -132,6 +134,13 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $groups;
 
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="dateAuth", type="datetime")
+     */
+    private $dateAuth;
+
 
     public function __construct()
     {
@@ -144,6 +153,9 @@ class User implements AdvancedUserInterface, \Serializable
 
         //$this->salt = md5(uniqid(null, true));
         //$this->token = sha1(uniqid(null, true).microtime());
+
+        $this->oldCoupons = new ArrayCollection();
+        $this->usercoupon = new ArrayCollection();
     }
 
 
@@ -420,7 +432,61 @@ class User implements AdvancedUserInterface, \Serializable
 
     }
 
-    
+    /**
+     * Add usercoupon
+     *
+     * @param \Troiswa\BackBundle\Entity\UserCoupon $usercoupon
+     * @return User
+     */
+    public function addUsercoupon(\Troiswa\BackBundle\Entity\UserCoupon $usercoupon)
+    {
+        if (!$this->hasAlreadyCoupon($usercoupon))
+        {
+            $usercoupon->setUser($this);
+            $this->usercoupon[] = $usercoupon;
+        }
+
+        return $this;
+    }
+
+    private function hasAlreadyCoupon($usercoupon)
+    {
+        foreach($this->usercoupon as $coupon)
+        {
+            if ($coupon->getCoupon()->getId() == $usercoupon->getCoupon()->getId())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Remove usercoupon
+     *
+     * @param \Troiswa\BackBundle\Entity\UserCoupon $usercoupon
+     */
+    public function removeUsercoupon(\Troiswa\BackBundle\Entity\UserCoupon $usercoupon)
+    {
+        $this->usercoupon->removeElement($usercoupon);
+        $this->oldCoupons[] = $usercoupon;
+    }
+
+    public function getOldCoupons()
+    {
+        return $this->oldCoupons;
+    }
+
+    /**
+     * Get usercoupon
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsercoupon()
+    {
+        return $this->usercoupon;
+    }
 
     /**
      * Checks whether the user's account has expired.

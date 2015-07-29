@@ -14,6 +14,9 @@ class CommentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // le code ci-dessous permet de récupérer l'objet lié au formulaire
+        //$builder->getData();
+
         $builder
             ->add('content')
             ->add('rate')
