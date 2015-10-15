@@ -1,0 +1,3 @@
+Product list: liste des produits
+cms.count: 'There are no apples|There are many apples'
+cms.list.nb: '{0} There are no apples|{1} There is one apple|]1,19] There are %count% apples|[20,Inf[ There are many apples'

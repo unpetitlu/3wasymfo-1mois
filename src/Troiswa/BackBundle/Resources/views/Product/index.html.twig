@@ -1,7 +1,18 @@
 {% extends "TroiswaBackBundle::layout.html.twig" %}
 
 {% block content -%}
-    <h1>Product list</h1>
+    
+    {% set count = 200 %}
+    {# avec un block #}
+    {% transchoice count %}
+        cms.count
+    {% endtranschoice %}
+    {# avec un filter #}
+    {{  "cms.list.nb"|transchoice(count) }}
+    {# avec un block #}
+    <h1>{% trans %}Product list{% endtrans %}</h1>
+    {# avec un filter #}
+    <h1>{{ "Product list"|trans }}</h1>
 
     <table class="records_list">
         <thead>
