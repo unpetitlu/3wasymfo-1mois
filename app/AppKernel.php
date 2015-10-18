@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test', 'benchmark'))) {

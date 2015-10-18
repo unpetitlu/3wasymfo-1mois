@@ -12,6 +12,12 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
 
     public function load(ObjectManager $manager)
     {
+        for($i = 0; $i < 2; $i++)
+        {
+            dump($this->getReference('category_'.$i));
+        }
+        die;
+        /*
         $product = new Product();
         $product->setTitle('Mon super produit fixtures');
         $product->setDescription('Lorem ipsum');
@@ -22,6 +28,7 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
 
         $manager->persist($product);
         $manager->flush();
+        */
     }
 
     public function getOrder()

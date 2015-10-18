@@ -2,9 +2,11 @@
 
 namespace Troiswa\BackBundle\Controller;
 
+use MetzWeb\Instagram\Instagram;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
+use Troiswa\BackBundle\Document\Product;
 use Troiswa\BackBundle\Entity\User;
 use Troiswa\BackBundle\Form\Type\TelType;
 
@@ -67,5 +69,41 @@ class MainController extends Controller
         }
 
         return $this->render('TroiswaBackBundle:Main:contact.html.twig', ['formContact' => $formContact->createView()]);
+    }
+
+    public function chatAction()
+    {
+        return $this->render('TroiswaBackBundle:Main:chat.html.twig');
+    }
+
+    public function todoAction()
+    {
+        /*
+        $product = new Product();
+        $product->setName('A Foo Bar');
+        $product->setPrice('19.99');
+
+        $dm = $this->get('doctrine_mongodb')->getManager();
+        $dm->persist($product);
+        $dm->flush();
+        */
+        $product = $this->get('doctrine_mongodb')
+            ->getRepository('TroiswaBackBundle:Product')
+            ->find('5623df8e8ead0e92010041a7');
+        /*
+        $test = new Product();
+        $test->setAll(['lala' => 1, 'tab' => ['ok' => 1, 'test' => [1,2,3,4]]]);
+        */
+        $product = $this->get('doctrine_mongodb')
+            ->getRepository('TroiswaBackBundle:Product')
+            ->find('5623df8e8ead0e92010041a7');
+        $test = new Product();
+        $test->setCollect([$product]);
+        $dm = $this->get('doctrine_mongodb')->getManager();
+        $dm->persist($test);
+        $dm->flush();
+        die('ok');
+
+        return $this->render('TroiswaBackBundle:Main:todo.html.twig');
     }
 }

@@ -1,0 +1,46 @@
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+
+{% block title "chat - " ~ parent() %}
+
+{% block titlepage %}Chat{% endblock %}
+
+
+{% block breadcrumb %}
+    {{ parent() }}
+    <li class="active">
+        <i class="fa fa-dashboard"></i> Chat
+    </li>
+{% endblock %}
+
+
+{% block content %}
+    <form id="formChat">
+        <textarea id="message"></textarea>
+        <button>Envoyer</button>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+    <script>
+        (function($)
+        {
+            var socket = io(window.location.hostname + ':3000');
+            $('#formChat').submit(function(event)
+            {
+               event.preventDefault();
+                socket.emit('comment', {
+                    content: $('#message').val()
+                })
+            });
+
+
+            socket.on('newmessage', function(){
+                alert('message posté');
+            });
+        })(jQuery);
+    </script>
+{% endblock %}
+

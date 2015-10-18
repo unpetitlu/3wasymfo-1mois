@@ -35,6 +35,13 @@ troiswa_back_contact:
     path:     /contact
     defaults: { _controller: TroiswaBackBundle:Main:contact }
 
+troiswa_back_chat:
+    path:     /chat
+    defaults: { _controller: TroiswaBackBundle:Main:chat }
+
+troiswa_back_todolist:
+    path:     /todo
+    defaults: { _controller: TroiswaBackBundle:Main:todo }
 
 troiswa_back_login:
     pattern:   /login

@@ -105,3 +105,13 @@ fos_user:
   db_driver: orm
   firewall_name: front
   user_class: Troiswa\BackBundle\Entity\ClientFos
+
+doctrine_mongodb:
+    connections:
+        default:
+            server: mongodb://localhost:27017
+            options: {}
+    default_database: test_database
+    document_managers:
+        default:
+            auto_mapping: true
