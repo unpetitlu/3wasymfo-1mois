@@ -12,6 +12,8 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
 
     public function load(ObjectManager $manager)
     {
+        $faker = \Faker\Factory::create('fr_FR');
+        
         for($i = 0; $i < 2; $i++)
         {
             dump($this->getReference('category_'.$i));
