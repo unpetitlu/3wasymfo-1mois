@@ -99,6 +99,11 @@ class ProductController extends Controller
         ));
     }
 
+
+    // Lorsqu'on a qu'un champ a mappé
+    // @ParamConverter("post", class="SensioBlogBundle:Post", options={"id" = "post_id"})
+    // Lorsqu'on a plusieurs champs a mappé
+    // @ParamConverter("post", options={"mapping": {"date": "date", "slug": "slug"}})
     /**
      * Finds and displays a Product entity.
      * @ParamConverter("entity", options={"mapping": {"idprod": "id"}})
