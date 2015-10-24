@@ -30,6 +30,12 @@ services:
             tags:
                 - { name: form.type, alias: gender }
 
+    troiswa.form.type.tags:
+      class: Troiswa\BackBundle\Form\Type\TagType
+      arguments: ["@doctrine.orm.entity_manager", "Troiswa\BackBundle\Entity\Tag"]
+      tags:
+          - { name: form.type, alias: tags }
+
     troiswa.form.type.entity_hidden:
        class: Troiswa\BackBundle\Form\Type\EntityHiddenType
        arguments: ["@doctrine.orm.entity_manager"]

@@ -76,7 +76,7 @@ security:
               path: troiswa_back_logout
               target: /admin/login
 
-            provider: provider_back
+            provider: in_memory
 
 
             remember_me:

@@ -47,7 +47,9 @@ class ProductType extends AbstractType
                 },
                 'required' => false
             ))
-            ->add('image', new ImageType());
+            ->add('image', new ImageType())
+            ->add('tag', 'tags')
+            /*
             $builder->add(
                 $builder->create('tag', 'collection', [
                     'type' => new TagType(),
@@ -56,6 +58,7 @@ class ProductType extends AbstractType
                 ])
                     ->addModelTransformer($transformer)
             );
+            */
         ;
     }
 

@@ -1,9 +1,18 @@
 {% extends "TroiswaBackBundle::layout.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/qunit-1.14.0.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/mab-jquery-taginput.css') }}">
+{% endblock %}
+
 {% block content -%}
+
     <h1>Product creation</h1>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+
+    {{ form_end(form) }}
 
         <ul class="record_actions">
     <li>
@@ -17,77 +26,48 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('assets/js/typeahead.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/mab-jquery-taginput.js') }}"></script>
+    <script src="{{ asset('assets/js/qunit-1.14.0.js') }}"></script>
+
     <script type="text/javascript">
-        var $collectionHolder;
-
-
-
-
-
-        // setup an "add a tag" link
-        var $addTagLink = $('<a href="#" class="add_tag_link">Add a tag</a>');
-        var $newLinkLi = $('<li></li>').append($addTagLink);
-
-        jQuery(document).ready(function() {
-            // Get the ul that holds the collection of tags
-            $collectionHolder = $('#troiswa_backbundle_product_tag');
-
-            // add the "add a tag" anchor and li to the tags ul
-            $collectionHolder.append($newLinkLi);
-
-            // count the current form inputs we have (e.g. 2), use that as the new
-            // index when inserting a new item (e.g. 2)
-            $collectionHolder.data('index', $collectionHolder.find(':input').length);
-
-            $addTagLink.on('click', function(e) {
-                // prevent the link from creating a "#" on the URL
-                e.preventDefault();
-
-                // add a new tag form (see next code block)
-                addTagForm($collectionHolder, $newLinkLi);
-            });
-
-            // ajoute un lien de suppression à tous les éléments li de
-            // formulaires de tag existants
-            collectionHolder.find('div.form-group').each(function() {
-                addTagFormDeleteLink($(this));
-            });
-
+        var tagsValue = $("#troiswa_backbundle_product_tag").attr('data-value').split('|');
+        var allTagsValue= [];
+        for (var i = 0; i < tagsValue.length; i++)
+        {
+            allTagsValue.push({tag:tagsValue[i]});
+        }
+        var tags = new Bloodhound({
+            datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.tag); },
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: allTagsValue
         });
 
-        function addTagForm($collectionHolder, $newLinkLi) {
-            // Get the data-prototype explained earlier
-            var prototype = $collectionHolder.data('prototype');
+        tags.initialize();
 
-            // get the new index
-            var index = $collectionHolder.data('index');
+        $('.tag-input').tagInput({
 
-            // Replace '__name__' in the prototype's HTML to
-            // instead be a number based on how many items we have
-            var newForm = prototype.replace(/__name__/g, index);
+            // tags separator
+            tagDataSeparator: '|',
 
-            // increase the index with one for the next item
-            $collectionHolder.data('index', index + 1);
+            // allow duplicate tags
+            allowDuplicates: false,
 
-            // Display the form in the page in an li, before the "Add a tag" link li
-            var $newFormLi = $('<li></li>').append(newForm);
-            $newLinkLi.before($newFormLi);
+            // enable typehead.js
+            typeahead: true,
 
-            // ajoute un lien de suppression au nouveau formulaire
-            addTagFormDeleteLink($newFormLi);
-        }
+            // tyhehead.js options
+            typeaheadOptions: {
+                highlight: true
+            },
 
-        function addTagFormDeleteLink($tagFormLi) {
-            var $removeFormA = $('<a href="#">Supprimer ce tag</a>');
-            $tagFormLi.append($removeFormA);
+            // typehead dataset options
+            typeaheadDatasetOptions: {
+                displayKey: 'tag',
+                source: tags.ttAdapter()
+            }
 
-            $removeFormA.on('click', function(e) {
-                // empêche le lien de créer un « # » dans l'URL
-                e.preventDefault();
-
-                // supprime l'élément li pour le formulaire de tag
-                $tagFormLi.remove();
-            });
-        }
+        });
     </script>
 {% endblock %}
+
