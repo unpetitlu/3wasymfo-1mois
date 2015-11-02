@@ -23,6 +23,14 @@ troiswa_back_admin:
     path:     /
     defaults: { _controller: TroiswaBackBundle:Main:index }
 
+troiswa_back_paiement:
+    pattern:   /paiement
+    defaults: { _controller: TroiswaBackBundle:Main:paiement }
+
+troiswa_back_processpaypal:
+    pattern:   /processpaypal
+    defaults: { _controller: TroiswaBackBundle:Main:processpaypal }
+
 
 troiswa_back_privacy:
     path: /privacy

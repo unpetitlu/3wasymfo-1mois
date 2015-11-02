@@ -18,3 +18,8 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
     maintenance: true
+
+    user_paypal: user paypal
+    pwd_paypal: password paypal
+    signature_paypal: signature paypal
+    active_paypal: false

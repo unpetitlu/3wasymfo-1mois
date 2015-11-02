@@ -40,6 +40,10 @@ security:
           #Utilisation du UserRepository pour créer un fournisseur et ainsi utiliser le login et l'email
           entity: { class: TroiswaBackBundle:User }
 
+        mix:
+          chain:
+            provider: [ in_memory, provider_back ]
+
 
         fos_userbundle:
             id: fos_user.user_provider.username
@@ -76,7 +80,7 @@ security:
               path: troiswa_back_logout
               target: /admin/login
 
-            provider: in_memory
+            provider: provider_back
 
 
             remember_me:

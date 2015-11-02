@@ -106,4 +106,130 @@ class MainController extends Controller
 
         return $this->render('TroiswaBackBundle:Main:todo.html.twig');
     }
+
+    public function paiementAction()
+    {
+
+        $total =20;
+        $totalTTC = 24;
+        $port = 10;
+
+        $params = [
+            "RETURNURL" => "http://localhost/3wasymfo-1mois/web/app_dev.php/admin/processpaypal",
+            "CANCELURL" => "http://localhost/3wasymfo-1mois/web/app_dev.php/admin/processpaypal",
+
+            // payment en plusieurs fois
+
+            "PAYMENTREQUEST_0_AMT" => $totalTTC + $port, // prix total
+            "PAYMENTREQUEST_0_CURRENCYCODE" => "EUR", // monnaie
+            "PAYMENTREQUEST_0_SHIPPINGAMT" => $port, // prix frais de port
+            "PAYMENTREQUEST_0_ITEMAMT" => $totalTTC, // somme total des produits sans frais de port
+        ];
+        $products = [
+            [
+                'name' => 'lorem',
+                'description' => 'du super text',
+                'price' => 10,
+                'qty' => 1,
+            ],
+            [
+                'name' => 'ipsum',
+                'description' => 'encore',
+                'price' => 14,
+                'qty' => 1,
+            ],
+        ];
+
+        // "L_PAYMENTREQUEST_0_NAME0" pour rajouter des informations sur le produit
+        // Permet d'ajouter des information paypal pour les informations ;)
+        foreach($products as $key => $prod)
+        {
+            $params["L_PAYMENTREQUEST_0_NAME".$key] = $prod['name'];
+            $params["L_PAYMENTREQUEST_0_DESC".$key] = $prod['description'];
+            $params["L_PAYMENTREQUEST_0_AMT".$key] = $prod['price']; // prix avec tva
+            $params["L_PAYMENTREQUEST_0_QTY".$key] = $prod['qty'];
+        }
+
+        $paypal = $this->get('troiswa.back.paypal');
+        $response = $paypal->request('SetExpressCheckout', $params);
+
+        if ($response)
+        {
+            // variable à mettre sur le bouton payer ;)
+            $paypalUrl = "https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&useraction=commit&token=" . $response['TOKEN'];
+        }
+        else
+        {
+            var_dump($paypal->errors);
+            die;
+        }
+
+        return $this->render('TroiswaBackBundle:Main:paiement.html.twig', compact('paypalUrl'));
+    }
+
+    public function processpaypalAction(Request $request)
+    {
+        $paypal = $this->get('troiswa.back.paypal');
+
+        // ATTENTION : Vérifier si le token est définie ;)
+
+        $params = [
+            "TOKEN" => $request->query->get('token')
+        ];
+
+        $responseArray = $paypal->request('GetExpressCheckoutDetails', $params);
+
+
+
+        // L'ETAPE DU DESSUS PEUT ËTRE PASSE :)
+        $params = [
+            "TOKEN" => $request->query->get('token'),
+            "PAYERID" => $request->query->get('PayerID'),
+            "PAYMENTACTION" => 'Sale',
+            "PAYMENTREQUEST_0_AMT" => $responseArray['PAYMENTREQUEST_0_AMT'], // NE PAS FAIRE CONFIANCE A LA SESSION il faut faire la méthode du dessus pour tout payer
+            "PAYMENTREQUEST_0_CURRENCYCODE" => "EUR",
+            "PAYMENTREQUEST_0_SHIPPINGAMT" => $responseArray['PAYMENTREQUEST_0_SHIPPINGAMT'], // prix frais de port
+            "PAYMENTREQUEST_0_ITEMAMT" => $responseArray['PAYMENTREQUEST_0_ITEMAMT'], // somme total des produits sans frais de port
+        ];
+
+        $products = [
+            [
+                'name' => 'lorem',
+                'description' => 'du super text',
+                'price' => 10,
+                'qty' => 1,
+            ],
+            [
+                'name' => 'ipsum',
+                'description' => 'encore',
+                'price' => 14,
+                'qty' => 1,
+            ],
+        ];
+
+        // "L_PAYMENTREQUEST_0_NAME0" pour rajouter des informations sur le produit
+        // Permet d'ajouter des information paypal pour les informations ;)
+        foreach($products as $key => $prod)
+        {
+            $params["L_PAYMENTREQUEST_0_NAME".$key] = $prod['name'];
+            $params["L_PAYMENTREQUEST_0_DESC".$key] = $prod['description'];
+            $params["L_PAYMENTREQUEST_0_AMT".$key] = $prod['price']; // prix avec tva
+            $params["L_PAYMENTREQUEST_0_QTY".$key] = $prod['qty'];
+        }
+
+
+        $response = $paypal->request('DoExpressCheckoutPayment', $params);
+
+        if ($response)
+        {
+            die('FIN');
+        }
+        else
+        {
+            var_dump($paypal->errors);
+            die;
+        }
+
+        //IL FAUT ABSOLUMENT SAUVEGARDER LA TRANSACTION ID : PAYMENTINFO_0__TRANSACTIONID
+    }
 }

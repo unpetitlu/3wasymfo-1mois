@@ -119,6 +119,11 @@ services:
             arguments: ["@session"]
 
 
+    troiswa.back.paypal:
+        class: Troiswa\BackBundle\Util\Paypal
+        arguments: [%user_paypal%, %pwd_paypal%, %signature_paypal%, %active_paypal%]
+
+
     troiswa.back.twig.util_extension:
             class: Troiswa\BackBundle\Twig\UtilExtension
             tags:
